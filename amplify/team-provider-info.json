@@ -10,6 +10,11 @@
       "StackName": "amplify-artcollect-dev-104754",
       "StackId": "arn:aws:cloudformation:eu-west-2:394219044273:stack/amplify-artcollect-dev-104754/8bf93f10-f764-11eb-b58f-02fc04005a9c",
       "AmplifyAppId": "d23t7rlcahldqg"
+    },
+    "categories": {
+      "auth": {
+        "artcollectc891060f": {}
+      }
     }
   }
 }
