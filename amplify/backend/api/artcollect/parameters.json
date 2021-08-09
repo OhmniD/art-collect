@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "artcollect",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authartcollect9b800707",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+type Medium @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  medium: String
+  ArtworksMedium: [Artwork] @connection(keyName: "byMedium", fields: ["id"])
+}
+
+type Artist @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  name: String!
+  artistStartYear: Int!
+  artistEndYear: Int
+  ArtworksArtist: [Artwork] @connection(keyName: "byArtist", fields: ["id"])
+}
+
+type Artwork @model @key(name: "byCollection", fields: ["collectionID"]) @auth(rules: [{allow: owner}]) @key(name: "byMedium", fields: ["mediumID"]) @key(name: "byArtist", fields: ["artistID"]) {
+  id: ID!
+  collectionID: ID
+  title: String!
+  creationDate: AWSDate
+  dimensions: String
+  mediumID: ID
+  artistID: ID
+}
+
+type Collection @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  ArtworksCollection: [Artwork] @connection(keyName: "byCollection", fields: ["id"])
+}
+ 

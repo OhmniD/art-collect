@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "artcollectc891060f_identitypool_c891060f",
+    "identityPoolName": "artcollect9b800707_identitypool_9b800707",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "artcolc891060f",
-    "userPoolName": "artcollectc891060f_userpool_c891060f",
+    "resourceNameTruncated": "artcol9b800707",
+    "userPoolName": "artcollect9b800707_userpool_9b800707",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "artcolc891060f_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "artcol9b800707_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "c891060f",
-    "resourceName": "artcollectc891060f",
+    "sharedId": "9b800707",
+    "resourceName": "artcollect9b800707",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
