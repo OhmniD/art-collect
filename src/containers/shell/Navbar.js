@@ -5,11 +5,36 @@ import { SearchIcon } from '@heroicons/react/solid'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { withRouter } from 'react-router';
 
+const user = {
+  name: 'Tom Cook',
+  email: 'tom@example.com',
+  imageUrl:
+    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+}
+const navigation = [
+  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Team', href: '#', current: false },
+  { name: 'Projects', href: '#', current: false },
+  { name: 'Calendar', href: '#', current: false },
+]
+const userNavigation = [
+  { name: 'Your Profile', href: '#' },
+  { name: 'Settings', href: '#' },
+  { name: 'Sign out', href: '#' },
+]
+
+
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 const Navbar = (props) => {
+
+
+  const handleNavClick = page => event => props.history.push(page)
+
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -32,13 +57,13 @@ const Navbar = (props) => {
                 <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
                   <button
-                    onClick = {() => props.history.push('/dashboard')}
+                    onClick = {handleNavClick('/dashboard')}
                     className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                   >
                     Dashboard
                   </button>
                   <button
-              
+                    onClick = {handleNavClick('/artworks')}
                     className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                   >
                   	Artworks

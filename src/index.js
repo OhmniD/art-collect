@@ -5,12 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
+import { MemoryRouter } from 'react-router';
+
 Amplify.configure(awsExports);
 
 
 ReactDOM.render(
   <React.StrictMode>
+    <MemoryRouter>
     <App />
+    </MemoryRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
