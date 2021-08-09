@@ -1,27 +1,29 @@
-type Medium @model @auth(rules: [{allow: public}]) {
+type Medium @model @auth(rules: [{allow: owner}]) {
   id: ID!
   medium: String
+  ArtworksMedium: [Artwork] @connection(keyName: "byMedium", fields: ["id"])
 }
 
-type Artist @model @auth(rules: [{allow: public}]) {
+type Artist @model @auth(rules: [{allow: owner}]) {
   id: ID!
   name: String!
-  artistStartYear: String!
-  artistEndYear: String
+  artistStartYear: Int!
+  artistEndYear: Int
+  ArtworksArtist: [Artwork] @connection(keyName: "byArtist", fields: ["id"])
 }
 
-type Artwork @model @auth(rules: [{allow: public}]) @key(name: "byCollection", fields: ["collectionID"]) {
+type Artwork @model @key(name: "byCollection", fields: ["collectionID"]) @auth(rules: [{allow: owner}]) @key(name: "byMedium", fields: ["mediumID"]) @key(name: "byArtist", fields: ["artistID"]) {
   id: ID!
-  Artist: Artist @connection
   collectionID: ID
   title: String!
-  Medium: Medium @connection
   creationDate: AWSDate
   dimensions: String
+  mediumID: ID
+  artistID: ID
 }
 
-type Collection @model @auth(rules: [{allow: public}]) {
+type Collection @model @auth(rules: [{allow: owner}]) {
   id: ID!
-  owner: String!
-  Artworks: [Artwork] @connection(keyName: "byCollection", fields: ["id"])
+  ArtworksCollection: [Artwork] @connection(keyName: "byCollection", fields: ["id"])
 }
+ 
