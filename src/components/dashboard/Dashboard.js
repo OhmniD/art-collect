@@ -1,15 +1,32 @@
-import { useContext } from 'react'
+import { DataStore } from 'aws-amplify';
+import { useContext, useEffect } from 'react'
 import { CollectionContext } from '../../App'
+import { Medium, Artwork, Collection, Artist } from "../../models";
 
-const stats = [
-	{ name: "Total Subscribers", stat: "71,897" },
-	{ name: "Avg. Open Rate", stat: "58.16%" },
-	{ name: "Avg. Click Rate", stat: "24.57%" },
-];
+// const stats = [
+// 	{ name: "Total Subscribers", stat: "71,897" },
+// 	{ name: "Avg. Open Rate", stat: "58.16%" },
+// 	{ name: "Avg. Click Rate", stat: "24.57%" },
+// ];
 
 export default function Dashboard() {
-	const {collection, setCollection} = useContext(CollectionContext);
-	// console.log(collection.id)
+	const {collection, mediums, artists, artworks, isLoaded} = useContext(CollectionContext);
+
+	let stats = []
+
+	const getCounts = () => {
+		stats = [
+			{name: "Total Artworks", stat: artworks.length},
+			{name: "Total Artists", stat: artists.length},
+			{name: "Total Mediums", stat: mediums.length},
+		]
+	}
+
+	useEffect(() => {
+		if (isLoaded !== false){
+			getCounts()
+		}
+	}, [isLoaded])
 
 	return (
 		<div>
@@ -29,10 +46,10 @@ export default function Dashboard() {
 					{stats.map((item) => (
 						<div
 							key={item.name}
-							className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6"
-						>
+							className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
 							<dt className="text-sm font-medium text-gray-500 truncate">
 								{item.name}
+								Test
 							</dt>
 							<dd className="mt-1 text-3xl font-semibold text-gray-900">
 								{item.stat}
@@ -42,5 +59,6 @@ export default function Dashboard() {
 				</dl>
 			</main>
 		</div>
+	
 	);
 }
