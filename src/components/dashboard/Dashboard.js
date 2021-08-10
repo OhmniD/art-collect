@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+import { CollectionContext } from '../../App'
+
 const stats = [
 	{ name: "Total Subscribers", stat: "71,897" },
 	{ name: "Avg. Open Rate", stat: "58.16%" },
@@ -5,6 +8,9 @@ const stats = [
 ];
 
 export default function Dashboard() {
+	const {collection, setCollection} = useContext(CollectionContext);
+	// console.log(collection.id)
+
 	return (
 		<div>
 			<header>

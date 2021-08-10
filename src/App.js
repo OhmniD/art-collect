@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import Main from "./containers/shell/Main";
 import Amplify, { Auth, API, graphqlOperation } from "aws-amplify";
@@ -14,30 +14,33 @@ import { listCollections } from "./graphql/queries";
 import { DataStore } from "@aws-amplify/datastore";
 import { Medium, Artwork, Collection, Artist } from "./models";
 
+export const CollectionContext = createContext();
+
 function App() {
-	const [collection, setCollection] = useState();
+	const [collection, setCollection] = useState({});
 
 	useEffect(() => {
-		(async () => {
-			const collection = await getCollection();
-			if (collection.data.listCollections.items.length === 0) {
-				makeCollection();
-				setCollection(await getCollection);
-			} else {
-				setCollection(collection.data.listCollections.items[0]);
-			}
-		})();
+
+		getCollection();
 	}, []);
 
 	const getCollection = async () => {
 		const owner = await Auth.currentAuthenticatedUser();
-
+	
+		//change to use DataStore.get rather than API.graphql??
 		const filter = { owner: { eq: owner } };
-		const collections = await API.graphql(graphqlOperation(listCollections), {
+		const collection = await API.graphql(graphqlOperation(listCollections), {
 			variables: { filter: filter },
 		});
 
-		return collections;
+		if (collection.data.listCollections.items.length === 0) {
+			//Test this with a new user!
+			const collection = makeCollection();
+			setCollection(collection.data.listCollections.items[0])
+		} else {
+			setCollection(collection.data.listCollections.items[0])
+		}
+
 	};
 
 	const makeCollection = async () => {
@@ -75,8 +78,10 @@ function App() {
 
 	return (
 		<main>
-			<Main collection={collection} />
-			<button onClick={handleClick}>Create Stuff</button>
+			<CollectionContext.Provider value={collection}>
+			<Main />
+			</CollectionContext.Provider>
+			{/* <button onClick={handleClick}>Create Stuff</button> */}
 		</main>
 	);
 }
