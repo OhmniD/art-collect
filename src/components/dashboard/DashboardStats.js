@@ -1,9 +1,5 @@
-
-
 const DashboardStats = ({key, name, stat}) => {
     return (
-        
-        
                 <div
                     key={key}
                     className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
@@ -14,8 +10,7 @@ const DashboardStats = ({key, name, stat}) => {
                         {stat}
                     </dd>
                 </div>
-        
-    
+
     )
 }
 

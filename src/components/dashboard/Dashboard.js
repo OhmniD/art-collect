@@ -21,13 +21,6 @@ export default function Dashboard() {
 		
 	}
 
-
-
-	// const createNodes = () => {
-		
-	// 	console.log("In create code: " + dashboardNodes)
-	// }
-
 	useEffect(() => {
 		if (isLoaded !== false){
 			const dashboardNodes = getCounts()
