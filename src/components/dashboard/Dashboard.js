@@ -1,64 +1,56 @@
-import { DataStore } from 'aws-amplify';
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CollectionContext } from '../../App'
 import { Medium, Artwork, Collection, Artist } from "../../models";
-
-// const stats = [
-// 	{ name: "Total Subscribers", stat: "71,897" },
-// 	{ name: "Avg. Open Rate", stat: "58.16%" },
-// 	{ name: "Avg. Click Rate", stat: "24.57%" },
-// ];
+import DashboardStats from './DashboardStats';
 
 export default function Dashboard() {
 	const {collection, mediums, artists, artworks, isLoaded} = useContext(CollectionContext);
 
-	let stats = []
+	const [dashboardNodes, setDashboardNodes] = useState([])
 
 	const getCounts = () => {
-		stats = [
+		const counts = [
 			{name: "Total Artworks", stat: artworks.length},
 			{name: "Total Artists", stat: artists.length},
-			{name: "Total Mediums", stat: mediums.length},
+			{name: "Total Mediums", stat: mediums.length}
 		]
+		return counts.map((item, index) => {
+			return <DashboardStats key={index} name={item.name} stat={item.stat} />
+		})
+
+		
 	}
+
+
+
+	// const createNodes = () => {
+		
+	// 	console.log("In create code: " + dashboardNodes)
+	// }
 
 	useEffect(() => {
 		if (isLoaded !== false){
-			getCounts()
+			const dashboardNodes = getCounts()
+			setDashboardNodes(dashboardNodes)
 		}
 	}, [isLoaded])
 
 	return (
+
 		<div>
 			<header>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h1 className="text-3xl font-bold leading-tight text-gray-900">
 						Dashboard
 					</h1>
+				
 				</div>
 			</header>
-
-			<main className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-				<h3 className="text-lg leading-6 font-medium text-gray-900">
-					Last 30 days
-				</h3>
-				<dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
-					{stats.map((item) => (
-						<div
-							key={item.name}
-							className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
-							<dt className="text-sm font-medium text-gray-500 truncate">
-								{item.name}
-								Test
-							</dt>
-							<dd className="mt-1 text-3xl font-semibold text-gray-900">
-								{item.stat}
-							</dd>
-						</div>
-					))}
-				</dl>
-			</main>
+			<div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+			<dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+			{dashboardNodes}
+			</dl>
+			</div>
 		</div>
-	
 	);
 }

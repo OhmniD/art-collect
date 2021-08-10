@@ -58,9 +58,10 @@ function App() {
 			setArtworks(artworks.data.listArtworks.items)
 			setArtists(artists.data.listArtists.items)
 			setMediums(mediums.data.listMediums.items)
+			setIsLoaded(true)
 		}
 
-		setIsLoaded(true)
+		
 	};
 
 	// const getArtworks = () => {
