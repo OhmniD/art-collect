@@ -11,7 +11,7 @@ export default function Main({ collection }) {
 			</nav>
 
 			<div className="py-10">
-				<Route path="/dashboard" component={Dashboard} />
+				<Route path="/" exact component={Dashboard} />
 				<Route path="/artworks" component={Artworks} />
 			</div>
 		</div>

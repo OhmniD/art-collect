@@ -51,7 +51,7 @@ const Navbar = (props) => {
 								<div className="hidden lg:ml-6 lg:flex lg:space-x-8">
 									{/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
 									<button
-										onClick={handleNavClick("/dashboard")}
+										onClick={handleNavClick("/")}
 										className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
 									>
 										Dashboard
