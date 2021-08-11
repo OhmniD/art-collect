@@ -21,6 +21,9 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
     };
     const addedData = await DataStore.save(new Artwork(artwork));
     setFormData({});
+    Array.from(document.querySelectorAll("input")).forEach(
+      (input) => (input.value = "")
+    );
     artworks = [...artworks, { ...addedData }]; //spread operater to convert Model to standard JS object
     console.log(artworks);
   };
@@ -52,6 +55,7 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
       </label>
       <div className="mt-1">
         <input
+          required
           onChange={handleChange}
           type="text"
           name="title"
@@ -68,6 +72,7 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
       </label>
       <div className="mt-1">
         <input
+          required
           onChange={handleChange}
           type="text"
           name="dimensions"
@@ -85,6 +90,7 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
           Artist
         </label>
         <select
+          required
           onChange={handleChange}
           id="artist"
           name="artist"
@@ -102,6 +108,7 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
           Medium
         </label>
         <select
+          required
           onChange={handleChange}
           id="medium"
           name="medium"
