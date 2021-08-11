@@ -24,6 +24,9 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
     Array.from(document.querySelectorAll("input")).forEach(
       (input) => (input.value = "")
     );
+    Array.from(document.querySelectorAll("select")).forEach(
+      (input) => (input.value = "default")
+    );
     artworks = [...artworks, { ...addedData }]; //spread operater to convert Model to standard JS object
     console.log(artworks);
   };
@@ -96,6 +99,7 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
           name="artist"
           className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
         >
+          <option value="default">-- Select an artist --</option>
           {artistOptions}
         </select>
       </div>
@@ -114,6 +118,7 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
           name="medium"
           className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
         >
+          <option value="default">-- Select a medium --</option>
           {mediumOptions}
         </select>
       </div>
