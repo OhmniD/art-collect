@@ -29,7 +29,8 @@ export const getMedium = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
     }
   }
@@ -52,11 +53,13 @@ export const listMediums = /* GraphQL */ `
         owner
         ArtworksMedium {
           nextToken
-          startedAt
+          scannedCount
+          count
         }
       }
       nextToken
-      startedAt
+      scannedCount
+      count
     }
   }
 `;
@@ -84,11 +87,13 @@ export const syncMediums = /* GraphQL */ `
         owner
         ArtworksMedium {
           nextToken
-          startedAt
+          scannedCount
+          count
         }
       }
       nextToken
-      startedAt
+      scannedCount
+      count
     }
   }
 `;
@@ -122,7 +127,8 @@ export const getArtist = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
     }
   }
@@ -147,11 +153,13 @@ export const listArtists = /* GraphQL */ `
         owner
         ArtworksArtist {
           nextToken
-          startedAt
+          scannedCount
+          count
         }
       }
       nextToken
-      startedAt
+      scannedCount
+      count
     }
   }
 `;
@@ -181,11 +189,13 @@ export const syncArtists = /* GraphQL */ `
         owner
         ArtworksArtist {
           nextToken
-          startedAt
+          scannedCount
+          count
         }
       }
       nextToken
-      startedAt
+      scannedCount
+      count
     }
   }
 `;
@@ -231,7 +241,8 @@ export const listArtworks = /* GraphQL */ `
         owner
       }
       nextToken
-      startedAt
+      scannedCount
+      count
     }
   }
 `;
@@ -264,7 +275,8 @@ export const syncArtworks = /* GraphQL */ `
         owner
       }
       nextToken
-      startedAt
+      scannedCount
+      count
     }
   }
 `;
@@ -294,7 +306,8 @@ export const getCollection = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
       owner
     }
@@ -316,7 +329,8 @@ export const listCollections = /* GraphQL */ `
         updatedAt
         ArtworksCollection {
           nextToken
-          startedAt
+          scannedCount
+          count
         }
         owner
       }
@@ -347,7 +361,8 @@ export const syncCollections = /* GraphQL */ `
         updatedAt
         ArtworksCollection {
           nextToken
-          startedAt
+          scannedCount
+          count
         }
         owner
       }

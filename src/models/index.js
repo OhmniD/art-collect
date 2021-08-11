@@ -4,11 +4,14 @@ import { schema } from './schema';
 
 
 
-const { Medium, Artwork, Artist, Collection } = initSchema(schema);
+const { Medium, Artwork, Artist, Collection, ModelArtistConnection, ModelArtworkConnection, ModelMediumConnection } = initSchema(schema);
 
 export {
   Medium,
   Artwork,
   Artist,
-  Collection
+  Collection,
+  ModelArtistConnection,
+  ModelArtworkConnection,
+  ModelMediumConnection
 };

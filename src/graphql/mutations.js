@@ -32,7 +32,8 @@ export const createMedium = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
     }
   }
@@ -68,7 +69,8 @@ export const updateMedium = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
     }
   }
@@ -104,7 +106,8 @@ export const deleteMedium = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
     }
   }
@@ -142,7 +145,8 @@ export const createArtist = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
     }
   }
@@ -180,7 +184,8 @@ export const updateArtist = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
     }
   }
@@ -218,7 +223,8 @@ export const deleteArtist = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
     }
   }
@@ -318,7 +324,8 @@ export const createCollection = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
       owner
     }
@@ -353,7 +360,8 @@ export const updateCollection = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
       owner
     }
@@ -388,7 +396,8 @@ export const deleteCollection = /* GraphQL */ `
           owner
         }
         nextToken
-        startedAt
+        scannedCount
+        count
       }
       owner
     }

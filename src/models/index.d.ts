@@ -2,7 +2,29 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+export declare class ModelArtistConnection {
+  readonly items?: (Artist | null)[];
+  readonly nextToken?: string;
+  readonly scannedCount?: number;
+  readonly count?: number;
+  constructor(init: ModelInit<ModelArtistConnection>);
+}
 
+export declare class ModelArtworkConnection {
+  readonly items?: (Artwork | null)[];
+  readonly nextToken?: string;
+  readonly scannedCount?: number;
+  readonly count?: number;
+  constructor(init: ModelInit<ModelArtworkConnection>);
+}
+
+export declare class ModelMediumConnection {
+  readonly items?: (Medium | null)[];
+  readonly nextToken?: string;
+  readonly scannedCount?: number;
+  readonly count?: number;
+  constructor(init: ModelInit<ModelMediumConnection>);
+}
 
 type MediumMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';

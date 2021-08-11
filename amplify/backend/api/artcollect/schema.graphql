@@ -32,3 +32,22 @@ type Collection @model @auth(rules: [{ allow: owner }]) {
 	ArtworksCollection: [Artwork]
 		@connection(keyName: "byCollection", fields: ["id"])
 }
+
+type ModelArtistConnection {
+	items: [Artist]
+	nextToken: String
+	scannedCount: Int
+	count: Int
+}
+type ModelArtworkConnection {
+	items: [Artwork]
+	nextToken: String
+	scannedCount: Int
+	count: Int
+}
+type ModelMediumConnection {
+	items: [Medium]
+	nextToken: String
+	scannedCount: Int
+	count: Int
+}
