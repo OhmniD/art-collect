@@ -26,6 +26,14 @@ export declare class ModelMediumConnection {
   constructor(init: ModelInit<ModelMediumConnection>);
 }
 
+export declare class ModelCollectionConnection {
+  readonly items?: (Collection | null)[];
+  readonly nextToken?: string;
+  readonly scannedCount?: number;
+  readonly count?: number;
+  constructor(init: ModelInit<ModelCollectionConnection>);
+}
+
 type MediumMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }

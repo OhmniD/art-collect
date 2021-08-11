@@ -4,7 +4,7 @@ import { schema } from './schema';
 
 
 
-const { Medium, Artwork, Artist, Collection, ModelArtistConnection, ModelArtworkConnection, ModelMediumConnection } = initSchema(schema);
+const { Medium, Artwork, Artist, Collection, ModelArtistConnection, ModelArtworkConnection, ModelMediumConnection, ModelCollectionConnection } = initSchema(schema);
 
 export {
   Medium,
@@ -13,5 +13,6 @@ export {
   Collection,
   ModelArtistConnection,
   ModelArtworkConnection,
-  ModelMediumConnection
+  ModelMediumConnection,
+  ModelCollectionConnection
 };

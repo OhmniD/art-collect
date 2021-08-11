@@ -51,3 +51,12 @@ type ModelMediumConnection {
 	scannedCount: Int
 	count: Int
 }
+
+type ModelCollectionConnection {
+	items: [Collection]
+	nextToken: String
+	scannedCount: Int
+	count: Int
+}
+
+# Adding counts - https://www.riccardosirigu.com/blog/aws-amplify-dynamodb-total-count-graphql-queries/

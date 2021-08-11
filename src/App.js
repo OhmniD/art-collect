@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState, useEffect, createContext } from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import Main from "./containers/shell/Main";

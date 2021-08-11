@@ -335,7 +335,8 @@ export const listCollections = /* GraphQL */ `
         owner
       }
       nextToken
-      startedAt
+      scannedCount
+      count
     }
   }
 `;
@@ -367,7 +368,8 @@ export const syncCollections = /* GraphQL */ `
         owner
       }
       nextToken
-      startedAt
+      scannedCount
+      count
     }
   }
 `;

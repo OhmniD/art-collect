@@ -2,19 +2,10 @@ import { useContext } from "react";
 import { CollectionContext } from "../../App";
 import ArtworkListView from "./ArtworkListView";
 import AddArtwork from "./AddArtwork";
-import AddArtist from "./AddArtist";
-import AddMedium from "./AddMedium";
 
 export default function Artworks() {
-	const {
-		collection,
-		mediums,
-		artists,
-		artworks,
-		setArtists,
-		setArtworks,
-		setMediums,
-	} = useContext(CollectionContext);
+	const { collection, mediums, artists, artworks, setArtworks } =
+		useContext(CollectionContext);
 
 	const artworkNodes = artworks.map((artwork) => {
 		const artist = artists.find(function (artist) {
@@ -86,9 +77,6 @@ export default function Artworks() {
 				artworks={artworks}
 				setArtworks={setArtworks}
 			/>
-
-			<AddArtist artists={artists} setArtists={setArtists} />
-			<AddMedium mediums={mediums} setMediums={setMediums} />
 		</div>
 	);
 }

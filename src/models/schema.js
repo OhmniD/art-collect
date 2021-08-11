@@ -469,7 +469,43 @@ export const schema = {
                     "attributes": []
                 }
             }
+        },
+        "ModelCollectionConnection": {
+            "name": "ModelCollectionConnection",
+            "fields": {
+                "items": {
+                    "name": "items",
+                    "isArray": true,
+                    "type": {
+                        "model": "Collection"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "nextToken": {
+                    "name": "nextToken",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "scannedCount": {
+                    "name": "scannedCount",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "count": {
+                    "name": "count",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
         }
     },
-    "version": "54ede5b66e8c44a9396d6a4c94355016"
+    "version": "64295490f6350f08029232271bfb0534"
 };
