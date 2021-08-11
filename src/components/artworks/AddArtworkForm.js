@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { DataStore } from "@aws-amplify/datastore";
-import { Artwork } from "../../models";
+import { API } from "aws-amplify";
+import { createArtwork } from "../../graphql/mutations";
+// import { Artwork } from "../../models";
 
 const AddArtwork = ({
 	artists,
@@ -8,6 +9,9 @@ const AddArtwork = ({
 	collection,
 	artworks,
 	setArtworks,
+	open,
+	setOpen,
+	cancelButtonRef,
 }) => {
 	const [formData, setFormData] = useState({});
 
@@ -27,7 +31,13 @@ const AddArtwork = ({
 			artistID: formData.artist,
 		};
 
-		const addedData = await DataStore.save(new Artwork(artwork));
+		const addedData = await API.graphql({
+			query: createArtwork,
+			variables: { input: artwork },
+		});
+
+		// const addedData = await DataStore.save(new Artwork(artwork));
+		console.log(addedData);
 
 		setFormData({});
 
@@ -39,7 +49,7 @@ const AddArtwork = ({
 			(input) => (input.value = "default")
 		);
 
-		setArtworks([...artworks, { ...addedData }]);
+		setArtworks([...artworks, addedData.data.createArtwork]);
 	};
 
 	const artistOptions = artists.map((artist, index) => {
@@ -60,7 +70,6 @@ const AddArtwork = ({
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<h2 className="py-3">Add an artwork</h2>
 			<label
 				htmlFor="title"
 				className="block text-sm font-medium text-gray-700"
@@ -131,9 +140,23 @@ const AddArtwork = ({
 					{mediumOptions}
 				</select>
 			</div>
-			<button className="inline-flex items-center px-4 py-2 mt-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-				Submit
-			</button>
+
+			<div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+				<button
+					className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm"
+					onClick={() => setOpen(false)}
+				>
+					Add artwork
+				</button>
+				<button
+					type="button"
+					className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:col-start-1 sm:text-sm"
+					onClick={() => setOpen(false)}
+					ref={cancelButtonRef}
+				>
+					Cancel
+				</button>
+			</div>
 		</form>
 	);
 };

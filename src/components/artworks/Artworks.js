@@ -1,16 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ArtworkListView from "./ArtworkListView";
-import AddArtwork from "./AddArtwork";
 import { ArtistsContext } from "../../providers/ArtistProvider";
 import { ArtworksContext } from "../../providers/ArtworkProvider";
 import { MediumsContext } from "../../providers/MediumProvider";
 import { CollectionContext } from "../../providers/CollectionProvider";
+import AddArtworkModal from "./AddArtworkModal";
 
 export default function Artworks() {
 	const { artists } = useContext(ArtistsContext);
 	const { artworks, setArtworks } = useContext(ArtworksContext);
 	const { mediums } = useContext(MediumsContext);
-	const collection = useContext(CollectionContext);
+	const { collection } = useContext(CollectionContext);
+
+	const [open, setOpen] = useState(false); //sets state of add artwork modal
 
 	const artworkNodes = artworks.map((artwork) => {
 		const artist = artists.find(function (artist) {
@@ -32,6 +34,13 @@ export default function Artworks() {
 
 	return (
 		<div className="flex flex-col">
+			<button
+				onClick={() => setOpen(!open)}
+				type="button"
+				className="inline-flex items-center max-w-xs px-4 py-2 mb-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+			>
+				Add artwork
+			</button>
 			<div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
 				<div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 					<div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -75,12 +84,14 @@ export default function Artworks() {
 				</div>
 			</div>
 
-			<AddArtwork
+			<AddArtworkModal
 				artists={artists}
 				mediums={mediums}
 				collection={collection}
 				artworks={artworks}
 				setArtworks={setArtworks}
+				open={open}
+				setOpen={setOpen}
 			/>
 		</div>
 	);
