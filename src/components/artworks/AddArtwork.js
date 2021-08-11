@@ -1,7 +1,6 @@
 import { useState } from "react";
-import ArtistFormInput from "./ArtistFormInput";
 import { DataStore } from "@aws-amplify/datastore";
-import { Medium, Artwork, Artist } from "../../models";
+import { Artwork } from "../../models";
 
 const AddArtwork = ({ artists, mediums, collection, artworks }) => {
   const [formData, setFormData] = useState({});

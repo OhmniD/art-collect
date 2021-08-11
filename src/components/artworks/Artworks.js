@@ -6,7 +6,7 @@ import AddArtist from "./AddArtist";
 import AddMedium from "./AddMedium";
 
 export default function Artworks() {
-  const { collection, mediums, artists, artworks, isLoaded } =
+  const { collection, mediums, artists, artworks } =
     useContext(CollectionContext);
 
   const artworkNodes = artworks.map((artwork) => {
