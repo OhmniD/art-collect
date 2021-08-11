@@ -6,7 +6,6 @@ import DashboardStats from "./DashboardStats";
 export default function Dashboard() {
 	const { collection, mediums, artists, artworks, isLoaded } =
 		useContext(CollectionContext);
-	const { collection2 } = useContext(Collection2Context);
 
 	const [dashboardNodes, setDashboardNodes] = useState([]);
 
