@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { CollectionContext } from "../../App";
 import ArtworkListView from "./ArtworkListView";
 import AddArtwork from "./AddArtwork";
+import AddArtist from "./AddArtist";
+import AddMedium from "./AddMedium";
 
 export default function Artworks() {
   const { collection, mediums, artists, artworks, isLoaded } =
@@ -76,6 +78,9 @@ export default function Artworks() {
         collection={collection}
         artworks={artworks}
       />
+
+      <AddArtist artists={artists} />
+      <AddMedium mediums={mediums} />
     </div>
   );
 }

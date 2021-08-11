@@ -48,7 +48,7 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
   });
 
   return (
-    <form autocomplete="off">
+    <form>
       <h2 class="py-3">Add an artwork</h2>
       <label
         htmlFor="title"
