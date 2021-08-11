@@ -16,7 +16,9 @@ const AddArtwork = ({
 		setFormData(formData);
 	};
 
-	const handleSubmit = async () => {
+	const handleSubmit = async (evt) => {
+		evt.preventDefault();
+
 		const artwork = {
 			title: formData.title,
 			dimensions: formData.dimensions,
@@ -24,15 +26,20 @@ const AddArtwork = ({
 			mediumID: formData.medium,
 			artistID: formData.artist,
 		};
+
 		const addedData = await DataStore.save(new Artwork(artwork));
+
 		setFormData({});
+
 		Array.from(document.querySelectorAll("input")).forEach(
 			(input) => (input.value = "")
 		);
+
 		Array.from(document.querySelectorAll("select")).forEach(
 			(input) => (input.value = "default")
 		);
-		setArtworks([...artworks, { ...addedData }]); //spread operater to convert Model to standard JS object
+
+		setArtworks([...artworks, { ...addedData }]);
 	};
 
 	const artistOptions = artists.map((artist, index) => {
@@ -52,7 +59,7 @@ const AddArtwork = ({
 	});
 
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 			<h2 className="py-3">Add an artwork</h2>
 			<label
 				htmlFor="title"
@@ -88,7 +95,6 @@ const AddArtwork = ({
 					placeholder="W mm x H mm x D mm"
 				/>
 			</div>
-
 			<div>
 				<label
 					htmlFor="artist"
@@ -107,7 +113,6 @@ const AddArtwork = ({
 					{artistOptions}
 				</select>
 			</div>
-
 			<div>
 				<label
 					htmlFor="medium"
@@ -126,12 +131,7 @@ const AddArtwork = ({
 					{mediumOptions}
 				</select>
 			</div>
-
-			<button
-				onClick={handleSubmit}
-				type="button"
-				className="inline-flex items-center px-4 py-2 mt-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-			>
+			<button className="inline-flex items-center px-4 py-2 mt-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 				Submit
 			</button>
 		</form>

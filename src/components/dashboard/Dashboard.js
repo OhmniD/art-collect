@@ -1,31 +1,23 @@
-import { useContext, useEffect, useState } from "react";
-import { CollectionContext } from "../../App";
-import { Medium, Artwork, Collection, Artist } from "../../models";
+import { useContext } from "react";
 import DashboardStats from "./DashboardStats";
+import { ArtistsContext } from "../../providers/ArtistProvider";
+import { ArtworksContext } from "../../providers/ArtworkProvider";
+import { MediumsContext } from "../../providers/MediumProvider";
 
 export default function Dashboard() {
-	const { collection, mediums, artists, artworks, isLoaded } =
-		useContext(CollectionContext);
+	const { artistCount } = useContext(ArtistsContext);
+	const { artworkCount } = useContext(ArtworksContext);
+	const { mediumCount } = useContext(MediumsContext);
 
-	const [dashboardNodes, setDashboardNodes] = useState([]);
+	const counts = [
+		{ name: "Total Artworks", count: artworkCount },
+		{ name: "Total Artists", count: artistCount },
+		{ name: "Total Mediums", count: mediumCount },
+	];
 
-	const getCounts = () => {
-		const counts = [
-			{ name: "Total Artworks", stat: artworks.length },
-			{ name: "Total Artists", stat: artists.length },
-			{ name: "Total Mediums", stat: mediums.length },
-		];
-		return counts.map((item, index) => {
-			return <DashboardStats key={index} name={item.name} stat={item.stat} />;
-		});
-	};
-
-	useEffect(() => {
-		if (isLoaded !== false) {
-			const dashboardNodes = getCounts();
-			setDashboardNodes(dashboardNodes);
-		}
-	}, [isLoaded]);
+	const dashboardNodes = counts.map((item, index) => {
+		return <DashboardStats key={index} name={item.name} count={item.count} />;
+	});
 
 	return (
 		<div>

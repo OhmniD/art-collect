@@ -6,6 +6,7 @@ export const MediumsContext = createContext();
 
 export const MediumProvider = (props) => {
 	const [mediums, setMediums] = useState([]);
+	const [mediumCount, setMediumCount] = useState(0);
 
 	const getMediums = async () => {
 		const owner = await Auth.currentAuthenticatedUser();
@@ -14,7 +15,7 @@ export const MediumProvider = (props) => {
 		const mediums = await API.graphql(graphqlOperation(listMediums), {
 			variables: { filter: filter },
 		});
-
+		setMediumCount(mediums.data.listMediums.scannedCount);
 		setMediums(mediums.data.listMediums.items);
 	};
 
@@ -23,7 +24,7 @@ export const MediumProvider = (props) => {
 	}, []);
 
 	return (
-		<MediumsContext.Provider value={{ mediums }}>
+		<MediumsContext.Provider value={{ mediums, setMediums, mediumCount }}>
 			{props.children}
 		</MediumsContext.Provider>
 	);

@@ -31,10 +31,11 @@ export const CollectionProvider = (props) => {
 
 	useEffect(() => {
 		getCollection();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
-		<CollectionContext.Provider value={{ collection }}>
+		<CollectionContext.Provider value={{ collection, setCollection }}>
 			{props.children}
 		</CollectionContext.Provider>
 	);

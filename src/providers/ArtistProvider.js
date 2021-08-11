@@ -6,6 +6,7 @@ export const ArtistsContext = createContext();
 
 export const ArtistProvider = (props) => {
 	const [artists, setArtists] = useState([]);
+	const [artistCount, setArtistCount] = useState(0);
 
 	const getArtists = async () => {
 		const owner = await Auth.currentAuthenticatedUser();
@@ -15,6 +16,7 @@ export const ArtistProvider = (props) => {
 			variables: { filter: filter },
 		});
 
+		setArtistCount(artists.data.listArtists.scannedCount);
 		setArtists(artists.data.listArtists.items);
 	};
 
@@ -23,7 +25,7 @@ export const ArtistProvider = (props) => {
 	}, []);
 
 	return (
-		<ArtistsContext.Provider value={{ artists }}>
+		<ArtistsContext.Provider value={{ artists, setArtists, artistCount }}>
 			{props.children}
 		</ArtistsContext.Provider>
 	);

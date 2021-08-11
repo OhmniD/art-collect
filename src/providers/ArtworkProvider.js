@@ -6,6 +6,7 @@ export const ArtworksContext = createContext();
 
 export const ArtworkProvider = (props) => {
 	const [artworks, setArtworks] = useState([]);
+	const [artworkCount, setArtworkCount] = useState(0);
 
 	const getArtworks = async () => {
 		const owner = await Auth.currentAuthenticatedUser();
@@ -15,6 +16,8 @@ export const ArtworkProvider = (props) => {
 			variables: { filter: filter },
 		});
 
+		setArtworkCount(artworks.data.listArtworks.scannedCount);
+
 		setArtworks(artworks.data.listArtworks.items);
 	};
 
@@ -23,7 +26,7 @@ export const ArtworkProvider = (props) => {
 	}, []);
 
 	return (
-		<ArtworksContext.Provider value={{ artworks }}>
+		<ArtworksContext.Provider value={{ artworks, setArtworks, artworkCount }}>
 			{props.children}
 		</ArtworksContext.Provider>
 	);
