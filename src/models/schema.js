@@ -221,7 +221,7 @@ export const schema = {
                     "name": "artistStartYear",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "artistEndYear": {
@@ -362,5 +362,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "c37182473a31fa0504fa5301bb3db080"
+    "version": "42ad7e8548b172d7a37fd98418fe2e86"
 };

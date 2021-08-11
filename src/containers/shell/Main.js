@@ -4,16 +4,16 @@ import Dashboard from "../../components/dashboard/Dashboard";
 import Artworks from "../../components/artworks/Artworks";
 
 export default function Main({ collection }) {
-	return (
-		<div>
-			<nav>
-				<Navbar collection={collection} />
-			</nav>
+  return (
+    <div>
+      <nav>
+        <Navbar collection={collection} />
+      </nav>
 
-			<div className="py-10">
-				<Route path="/" exact component={Dashboard} />
-				<Route path="/artworks" component={Artworks} />
-			</div>
-		</div>
-	);
+      <div className="py-10 px-10">
+        <Route path="/" exact component={Dashboard} />
+        <Route path="/artworks" component={Artworks} />
+      </div>
+    </div>
+  );
 }

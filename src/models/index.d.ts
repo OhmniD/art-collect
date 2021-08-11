@@ -47,7 +47,7 @@ export declare class Artwork {
 export declare class Artist {
   readonly id: string;
   readonly name: string;
-  readonly artistStartYear: number;
+  readonly artistStartYear?: number;
   readonly artistEndYear?: number;
   readonly ArtworksArtist?: (Artwork | null)[];
   readonly createdAt?: string;
