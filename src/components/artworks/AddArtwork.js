@@ -48,7 +48,7 @@ const AddArtwork = ({ artists, mediums, collection, artworks }) => {
 
   return (
     <form>
-      <h2 class="py-3">Add an artwork</h2>
+      <h2 className="py-3">Add an artwork</h2>
       <label
         htmlFor="title"
         className="block text-sm font-medium text-gray-700"

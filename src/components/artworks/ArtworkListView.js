@@ -1,6 +1,10 @@
-const ArtworkListView = ({ key, title, artist, medium }) => {
+import { withRouter } from "react-router";
+
+const ArtworkListView = ({ key, title, artist, medium, history }) => {
+  const handleNavClick = (page) => (event) => history.push(page);
+
   return (
-    <tr key={key}>
+    <tr key={key} onClick={handleNavClick("/artwork")}>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
           <div className="flex-shrink-0 h-10 w-10">
@@ -32,4 +36,4 @@ const ArtworkListView = ({ key, title, artist, medium }) => {
   );
 };
 
-export default ArtworkListView;
+export default withRouter(ArtworkListView);
