@@ -11,22 +11,29 @@ import {
 } from "@heroicons/react/outline";
 
 const navigation = [
-	{ name: "Artwork Details", icon: UserCircleIcon, current: true },
-	{ name: "Images", icon: KeyIcon, current: false },
+	{
+		name: "Artwork Details",
+		icon: UserCircleIcon,
+		current: true,
+		id: "artwork-details",
+	},
+	{ name: "Images", icon: KeyIcon, current: false, id: "artwork-images" },
 	{
 		name: "Loans & Consignment",
 		icon: CreditCardIcon,
 		current: false,
+		id: "loans-consignment",
 	},
-	{ name: "Provenance", icon: UserGroupIcon, current: false },
+	{ name: "Provenance", icon: UserGroupIcon, current: false, id: "provenance" },
 	{
 		name: "Location & Shipping",
 
 		icon: ViewGridAddIcon,
 		current: false,
+		id: "location-shipping",
 	},
-	{ name: "Financial", icon: ViewGridAddIcon, current: false },
-	{ name: "Notes", icon: ViewGridAddIcon, current: false },
+	{ name: "Financial", icon: ViewGridAddIcon, current: false, id: "financial" },
+	{ name: "Notes", icon: ViewGridAddIcon, current: false, id: "notes" },
 ];
 
 function classNames(...classes) {
@@ -39,9 +46,13 @@ export default function Artwork() {
 	const [slideoverOpen, setSlideoverOpen] = useState(false);
 	const [slideoverSection, setSlideoverSection] = useState({});
 
-	const handleClick = () => {
+	const handleClick = (e) => {
+		const item = navigation.find(function (item) {
+			return e.target.id === item.id;
+		});
+
 		setSlideoverOpen(!slideoverOpen);
-		// setSlideoverSection(item);
+		setSlideoverSection(item);
 	};
 
 	return (
@@ -69,7 +80,9 @@ export default function Artwork() {
 								)}
 								aria-hidden="true"
 							/>
-							<span className="truncate">{item.name}</span>
+							<span className="truncate" id={item.id}>
+								{item.name}
+							</span>
 						</button>
 					))}
 				</nav>
@@ -82,7 +95,7 @@ export default function Artwork() {
 				<Slideover
 					slideoverOpen={slideoverOpen}
 					setSlideoverOpen={setSlideoverOpen}
-					//   slideoverSection={slideoverSection}
+					slideoverSection={slideoverSection}
 				/>
 			</div>
 		</div>
