@@ -25,7 +25,7 @@ export default function Artworks() {
 		return (
 			<ArtworkListView
 				key={artwork.id}
-				title={artwork.title}
+				artwork={artwork}
 				artist={artist}
 				medium={medium}
 			/>

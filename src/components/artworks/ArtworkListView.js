@@ -1,6 +1,6 @@
-import { withRouter } from "react-router";
+import { withRouter, Link } from "react-router";
 
-const ArtworkListView = ({ key, title, artist, medium, history }) => {
+const ArtworkListView = ({ key, artwork, artist, medium, history }) => {
 	const handleNavClick = (page) => (event) => history.push(page);
 
 	return (
@@ -15,7 +15,9 @@ const ArtworkListView = ({ key, title, artist, medium, history }) => {
 						/>
 					</div>
 					<div className="ml-4">
-						<div className="text-sm font-medium text-gray-900">{title}</div>
+						<div className="text-sm font-medium text-gray-900">
+							{artwork.title}
+						</div>
 						<div className="text-sm text-gray-500">{/* {artist.id} */}</div>
 					</div>
 				</div>
