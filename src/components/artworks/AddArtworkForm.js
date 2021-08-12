@@ -72,7 +72,7 @@ const AddArtwork = ({
 		<form onSubmit={handleSubmit}>
 			<label
 				htmlFor="title"
-				className="block text-sm font-medium text-gray-700"
+				className="flex text-sm font-medium text-gray-700t"
 			>
 				Title
 			</label>
@@ -89,7 +89,7 @@ const AddArtwork = ({
 			</div>
 			<label
 				htmlFor="dimensions"
-				className="block text-sm font-medium text-gray-700"
+				className="flex text-sm font-medium text-gray-700 mt-1"
 			>
 				Dimensions
 			</label>
@@ -100,14 +100,14 @@ const AddArtwork = ({
 					type="text"
 					name="dimensions"
 					id="dimensions"
-					className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+					className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-auto sm:text-sm border-gray-300 rounded-md"
 					placeholder="W mm x H mm x D mm"
 				/>
 			</div>
 			<div>
 				<label
 					htmlFor="artist"
-					className="block text-sm font-medium text-gray-700"
+					className="flex text-sm font-medium text-gray-700 mt-1"
 				>
 					Artist
 				</label>
@@ -116,7 +116,7 @@ const AddArtwork = ({
 					onChange={handleChange}
 					id="artist"
 					name="artist"
-					className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+					className="mt-1 block w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
 				>
 					<option value="default">-- Select an artist --</option>
 					{artistOptions}
@@ -125,7 +125,7 @@ const AddArtwork = ({
 			<div>
 				<label
 					htmlFor="medium"
-					className="block text-sm font-medium text-gray-700"
+					className="flex text-sm font-medium text-gray-700 mt-1"
 				>
 					Medium
 				</label>
@@ -134,7 +134,7 @@ const AddArtwork = ({
 					onChange={handleChange}
 					id="medium"
 					name="medium"
-					className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+					className="mt-1 block w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
 				>
 					<option value="default">-- Select a medium --</option>
 					{mediumOptions}
