@@ -4,6 +4,7 @@ import Navbar from "./components/navigation/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Artworks from "./components/artworks/Artworks";
 import Artwork from "./components/artworks/Artwork";
+import Artists from "./components/artists/Artists";
 import { CollectionProvider } from "./providers/CollectionProvider";
 import { ArtworkProvider } from "./providers/ArtworkProvider";
 import { ArtistProvider } from "./providers/ArtistProvider";
@@ -27,6 +28,7 @@ function App() {
 									path="/artwork"
 									render={(props) => <Artwork {...props} />}
 								/>
+								<Route path="/artists" component={Artists} />
 							</main>
 						</CollectionProvider>
 					</ArtworkProvider>

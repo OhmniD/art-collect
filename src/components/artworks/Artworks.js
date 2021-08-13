@@ -34,7 +34,11 @@ export default function Artworks() {
 
 	return (
 		<div>
-			<div className="flex justify-end">
+			<div className="flex justify-between">
+				<h1 className="text-3xl font-bold leading-tight text-gray-900">
+					Artworks
+				</h1>
+
 				<button
 					onClick={() => setOpen(!open)}
 					type="button"
