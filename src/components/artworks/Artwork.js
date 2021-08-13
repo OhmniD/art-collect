@@ -55,9 +55,9 @@ export default function Artwork() {
   const [slideoverOpen, setSlideoverOpen] = useState(false);
   const [slideoverSection, setSlideoverSection] = useState({});
 
-  const handleClick = async (e) => {
+  const handleClick = async (evt) => {
     const item = await navigation.find(function (item) {
-      return e.target.id === item.id;
+      return evt.target.id === item.id;
     });
 
     item.current = true;

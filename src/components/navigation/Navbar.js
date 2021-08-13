@@ -46,7 +46,21 @@ const Navbar = (props) => {
     },
   ]);
 
-  const handleNavClick = (page) => (event) => props.history.push(page);
+  const [currentPage, setCurrentPage] = useState(navigation[0]);
+
+  // even though this works it is absolutely terrible - find a better way to do it
+  const handleNavClick = (page) => async (evt) => {
+    currentPage.current = false;
+    setNavigation([...navigation], currentPage);
+    const item = await navigation.find(function (item) {
+      return evt.target.id === item.id;
+    });
+
+    item.current = true;
+    setNavigation([...navigation], item);
+    setCurrentPage(item);
+    props.history.push(page);
+  };
 
   return (
     <Disclosure as="nav" className="bg-white shadow">
