@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { withRouter } from "react-router";
+import logo from "../../static/assets/art-collect-logo.png";
 
 // const user = {
 //   name: "Tom Cook",
@@ -38,14 +39,14 @@ const Navbar = (props) => {
 							<div className="flex px-2 lg:px-0">
 								<div className="flex-shrink-0 flex items-center">
 									<img
-										className="block lg:hidden h-8 w-auto"
-										src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-										alt="Workflow"
+										className="block lg:hidden mt-0.25 h-10 w-auto"
+										src={logo}
+										alt="Art Collect Logo"
 									/>
 									<img
-										className="hidden lg:block h-8 w-auto"
-										src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-										alt="Workflow"
+										className="hidden lg:block h-10 mt-0.25 w-auto"
+										src={logo}
+										alt="Art Collect Logo"
 									/>
 								</div>
 								<div className="hidden lg:ml-6 lg:flex lg:space-x-8">
