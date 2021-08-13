@@ -7,14 +7,24 @@ export default function Slideover({
 	slideoverOpen,
 	setSlideoverOpen,
 	slideoverSection,
+	setSlideoverSection,
+	navigation,
+	setNavigation,
 }) {
+	const handleClose = () => {
+		setSlideoverOpen(false);
+		slideoverSection.current = false;
+		setNavigation([...navigation], slideoverSection);
+		setSlideoverSection({});
+	};
+
 	return (
 		<Transition.Root show={slideoverOpen} as={Fragment}>
 			<Dialog
 				as="div"
 				auto-reslideoverOpen="true"
 				className="fixed inset-0 overflow-hidden"
-				onClose={setSlideoverOpen}
+				onClose={handleClose}
 			>
 				<div className="absolute inset-0 overflow-hidden">
 					<Transition.Child
@@ -38,7 +48,7 @@ export default function Slideover({
 							leaveFrom="translate-x-0"
 							leaveTo="translate-x-full"
 						>
-							<div className="relative w-screen max-w-md">
+							<div className="relative w-screen max-w-screen-md">
 								<Transition.Child
 									as={Fragment}
 									enter="ease-in-out duration-500"
@@ -51,7 +61,9 @@ export default function Slideover({
 									<div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
 										<button
 											className="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-											onClick={() => setSlideoverOpen(false)}
+											onClick={() => {
+												handleClose();
+											}}
 										>
 											<span className="sr-only">Close panel</span>
 											<XIcon className="h-6 w-6" aria-hidden="true" />
@@ -65,7 +77,8 @@ export default function Slideover({
 										</Dialog.Title>
 									</div>
 									<div className="mt-6 relative flex-1 px-4 sm:px-6">
-										{/* {slideoverSection} */}
+										This is where the {slideoverSection.name} information will
+										go
 										<div className="absolute inset-0 px-4 sm:px-6">
 											<div
 												className="h-full border-2 border-dashed border-gray-200"

@@ -68,12 +68,6 @@ const Navbar = (props) => {
 									<button className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
 										Mediums
 									</button>
-									<button
-										onClick={handleNavClick("/additems")}
-										className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-									>
-										Add Items
-									</button>
 								</div>
 							</div>
 							<div className="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">

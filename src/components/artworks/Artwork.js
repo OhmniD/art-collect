@@ -10,31 +10,25 @@ import {
 	ViewGridAddIcon,
 } from "@heroicons/react/outline";
 
-const navigation = [
-	{
-		name: "Artwork Details",
-		icon: UserCircleIcon,
-		current: true,
-		id: "artwork-details",
-	},
-	{ name: "Images", icon: KeyIcon, current: false, id: "artwork-images" },
-	{
-		name: "Loans & Consignment",
-		icon: CreditCardIcon,
-		current: false,
-		id: "loans-consignment",
-	},
-	{ name: "Provenance", icon: UserGroupIcon, current: false, id: "provenance" },
-	{
-		name: "Location & Shipping",
+// const navigation = [
+// 	{ name: "Images", icon: KeyIcon, current: false, id: "artwork-images" },
+// 	{
+// 		name: "Loans & Consignment",
+// 		icon: CreditCardIcon,
+// 		current: false,
+// 		id: "loans-consignment",
+// 	},
+// 	{ name: "Provenance", icon: UserGroupIcon, current: false, id: "provenance" },
+// 	{
+// 		name: "Location & Shipping",
 
-		icon: ViewGridAddIcon,
-		current: false,
-		id: "location-shipping",
-	},
-	{ name: "Financial", icon: ViewGridAddIcon, current: false, id: "financial" },
-	{ name: "Notes", icon: ViewGridAddIcon, current: false, id: "notes" },
-];
+// 		icon: ViewGridAddIcon,
+// 		current: false,
+// 		id: "location-shipping",
+// 	},
+// 	{ name: "Financial", icon: ViewGridAddIcon, current: false, id: "financial" },
+// 	{ name: "Notes", icon: ViewGridAddIcon, current: false, id: "notes" },
+// ];
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
@@ -43,16 +37,48 @@ function classNames(...classes) {
 export default function Artwork() {
 	const { artwork, artist, medium } = useLocation().state;
 
+	const [navigation, setNavigation] = useState([
+		{ name: "Images", icon: KeyIcon, current: false, id: "artwork-images" },
+		{
+			name: "Loans & Consignment",
+			icon: CreditCardIcon,
+			current: false,
+			id: "loans-consignment",
+		},
+		{
+			name: "Provenance",
+			icon: UserGroupIcon,
+			current: false,
+			id: "provenance",
+		},
+		{
+			name: "Location & Shipping",
+
+			icon: ViewGridAddIcon,
+			current: false,
+			id: "location-shipping",
+		},
+		{
+			name: "Financial",
+			icon: ViewGridAddIcon,
+			current: false,
+			id: "financial",
+		},
+		{ name: "Notes", icon: ViewGridAddIcon, current: false, id: "notes" },
+	]);
 	const [slideoverOpen, setSlideoverOpen] = useState(false);
 	const [slideoverSection, setSlideoverSection] = useState({});
 
-	const handleClick = (e) => {
-		const item = navigation.find(function (item) {
+	const handleClick = async (e) => {
+		const item = await navigation.find(function (item) {
 			return e.target.id === item.id;
 		});
 
-		setSlideoverOpen(!slideoverOpen);
-		setSlideoverSection(item);
+		item.current = true;
+		setNavigation([...navigation], item);
+
+		await setSlideoverSection(item);
+		await setSlideoverOpen(!slideoverOpen);
 	};
 
 	return (
@@ -61,7 +87,8 @@ export default function Artwork() {
 				<nav className="space-y-1">
 					{navigation.map((item) => (
 						<button
-							key={item.name}
+							key={item.id}
+							id={item.id}
 							onClick={handleClick}
 							className={classNames(
 								item.current
@@ -96,6 +123,9 @@ export default function Artwork() {
 					slideoverOpen={slideoverOpen}
 					setSlideoverOpen={setSlideoverOpen}
 					slideoverSection={slideoverSection}
+					setSlideoverSection={setSlideoverSection}
+					navigation={navigation}
+					setNavigation={setNavigation}
 				/>
 			</div>
 		</div>
