@@ -5,28 +5,28 @@ import { listArtists } from "../graphql/queries";
 export const ArtistsContext = createContext();
 
 export const ArtistProvider = (props) => {
-	const [artists, setArtists] = useState([]);
-	const [artistCount, setArtistCount] = useState(0);
+  const [artists, setArtists] = useState([]);
+  const [artistCount, setArtistCount] = useState(0);
 
-	const getArtists = async () => {
-		const owner = await Auth.currentAuthenticatedUser();
-		const filter = { owner: { eq: owner } };
+  const getArtists = async () => {
+    const owner = await Auth.currentAuthenticatedUser();
+    const filter = { owner: { eq: owner } };
 
-		const artists = await API.graphql(graphqlOperation(listArtists), {
-			variables: { filter: filter },
-		});
+    const artists = await API.graphql(graphqlOperation(listArtists), {
+      variables: { filter: filter },
+    });
 
-		setArtistCount(artists.data.listArtists.scannedCount);
-		setArtists(artists.data.listArtists.items);
-	};
+    setArtistCount(artists.data.listArtists.scannedCount);
+    setArtists(artists.data.listArtists.items);
+  };
 
-	useEffect(() => {
-		getArtists();
-	}, []);
+  useEffect(() => {
+    getArtists();
+  }, []);
 
-	return (
-		<ArtistsContext.Provider value={{ artists, setArtists, artistCount }}>
-			{props.children}
-		</ArtistsContext.Provider>
-	);
+  return (
+    <ArtistsContext.Provider value={{ artists, setArtists, artistCount }}>
+      {props.children}
+    </ArtistsContext.Provider>
+  );
 };
