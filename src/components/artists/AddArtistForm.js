@@ -15,15 +15,16 @@ const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
 
     const artist = {
       name: formData.name,
-      artistStartYear: formData.artistStartYear.parseInt,
-      artistEndYear: formData.artistEndYear.parseInt,
+      artistStartYear: formData.artistStartYear,
+      artistEndYear: formData.artistEndYear,
     };
+
     const addedData = await API.graphql({
       query: createArtist,
       variables: { input: artist },
     });
 
-    setFormData({});
+    // await setFormData({});
     Array.from(document.querySelectorAll("input")).forEach(
       (input) => (input.value = "")
     );
@@ -32,7 +33,7 @@ const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
       (input) => (input.value = "default")
     );
 
-    setArtists([...artists, addedData.data.createArtist]);
+    await setArtists([...artists, addedData.data.createArtist]);
   };
 
   return (
@@ -60,7 +61,6 @@ const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
       </label>
       <div className="mt-1">
         <input
-          required
           onChange={handleChange}
           type="number"
           name="artistStartYear"
@@ -78,7 +78,6 @@ const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
       </label>
       <div className="mt-1">
         <input
-          required
           onChange={handleChange}
           type="number"
           name="artistEndYear"

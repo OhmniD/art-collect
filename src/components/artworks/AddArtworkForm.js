@@ -38,8 +38,6 @@ const AddArtwork = ({
 
     // const addedData = await DataStore.save(new Artwork(artwork));
 
-    setFormData({});
-
     Array.from(document.querySelectorAll("input")).forEach(
       (input) => (input.value = "")
     );

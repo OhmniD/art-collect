@@ -7,7 +7,7 @@ import ArtistCard from "./ArtistCard";
 
 export default function Artists() {
   const { artists, setArtists } = useContext(ArtistsContext);
-  const { artworks, setArtworks } = useContext(ArtworksContext);
+  const { artworks } = useContext(ArtworksContext);
 
   const [open, setOpen] = useState(false); //sets state of add artist modal
 
@@ -15,7 +15,9 @@ export default function Artists() {
     const artistWorks = artworks.filter(
       (artwork) => artwork.artistID === artist.id
     );
-    return <ArtistCard artist={artist} artistWorks={artistWorks} />;
+    return (
+      <ArtistCard key={artist.id} artist={artist} artistWorks={artistWorks} />
+    );
   });
 
   return (
