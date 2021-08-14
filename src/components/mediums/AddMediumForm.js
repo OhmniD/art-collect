@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { API } from "aws-amplify";
-import { createArtist } from "../../graphql/mutations";
+import { createMedium } from "../../graphql/mutations";
 
-const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
+const AddArtist = ({ mediums, setMediums, open, setOpen, cancelButtonRef }) => {
 	const [formData, setFormData] = useState({});
 
 	const handleChange = (evt) => {
@@ -13,15 +13,13 @@ const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
 	const handleSubmit = async (evt) => {
 		evt.preventDefault();
 
-		const artist = {
-			name: formData.name,
-			artistStartYear: formData.artistStartYear,
-			artistEndYear: formData.artistEndYear,
+		const medium = {
+			medium: formData.name,
 		};
 
 		const addedData = await API.graphql({
-			query: createArtist,
-			variables: { input: artist },
+			query: createMedium,
+			variables: { input: medium },
 		});
 
 		// await setFormData({});
@@ -33,13 +31,13 @@ const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
 			(input) => (input.value = "default")
 		);
 
-		await setArtists([...artists, addedData.data.createArtist]);
+		await setMediums([...mediums, addedData.data.createMedium]);
 	};
 
 	return (
 		<form onSubmit={handleSubmit}>
 			<label htmlFor="name" className="flex text-sm font-medium text-gray-700">
-				Name
+				Medium
 			</label>
 			<div className="mt-1">
 				<input
@@ -49,41 +47,7 @@ const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
 					name="name"
 					id="name"
 					className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-					placeholder="Takashi Murakami"
-				/>
-			</div>
-
-			<label
-				htmlFor="artistStartYear"
-				className="flex text-sm font-medium text-gray-700 mt-1"
-			>
-				Artist start year
-			</label>
-			<div className="mt-1">
-				<input
-					onChange={handleChange}
-					type="number"
-					name="artistStartYear"
-					id="artistStartYear"
-					className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-					placeholder="1998"
-				/>
-			</div>
-
-			<label
-				htmlFor="artistEndYear"
-				className="flex text-sm font-medium text-gray-700 mt-1"
-			>
-				Artist end year
-			</label>
-			<div className="mt-1">
-				<input
-					onChange={handleChange}
-					type="number"
-					name="artistEndYear"
-					id="artistEndYear"
-					className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-					placeholder="2021"
+					placeholder="Oil on canvas"
 				/>
 			</div>
 
@@ -92,7 +56,7 @@ const AddArtist = ({ artists, setArtists, open, setOpen, cancelButtonRef }) => {
 					className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm"
 					onClick={() => setOpen(false)}
 				>
-					Add artist
+					Add medium
 				</button>
 				<button
 					type="button"
