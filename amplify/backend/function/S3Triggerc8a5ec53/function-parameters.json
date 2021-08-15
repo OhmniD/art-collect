@@ -7,6 +7,10 @@
     {
       "cloudFormationParameterName": "thumbnailHeight",
       "environmentVariableName": "THUMBNAIL_HEIGHT"
+    },
+    {
+      "cloudFormationParameterName": "dynamodbImagesTableArn",
+      "environmentVariableName": "DYNAMODB_IMAGES_TABLE_ARN"
     }
   ]
 }

@@ -1,5 +1,4 @@
 type ImageS3Info @model @auth(rules: [{ allow: owner }]) {
-	id: ID!
 	key: String!
 	height: Int!
 	width: Int!
@@ -12,8 +11,8 @@ type Image
 	id: ID!
 	artworkID: ID!
 	bucket: String!
-	fullsize: ImageS3Info @connection
-	thumbnail: ImageS3Info @connection
+	fullsize: ImageS3Info!
+	thumbnail: ImageS3Info!
 	isPrimary: Boolean
 }
 

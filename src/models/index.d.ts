@@ -73,8 +73,6 @@ export declare class Image {
   readonly id: string;
   readonly artworkID: string;
   readonly bucket: string;
-  readonly fullsize?: ImageS3Info;
-  readonly thumbnail?: ImageS3Info;
   readonly isPrimary?: boolean;
   readonly createdAt?: string;
   readonly updatedAt?: string;

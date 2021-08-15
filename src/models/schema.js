@@ -100,32 +100,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "fullsize": {
-                    "name": "fullsize",
-                    "isArray": false,
-                    "type": {
-                        "model": "ImageS3Info"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "imageFullsizeId"
-                    }
-                },
-                "thumbnail": {
-                    "name": "thumbnail",
-                    "isArray": false,
-                    "type": {
-                        "model": "ImageS3Info"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "imageThumbnailId"
-                    }
-                },
                 "isPrimary": {
                     "name": "isPrimary",
                     "isArray": false,
@@ -694,5 +668,5 @@ export const schema = {
             }
         }
     },
-    "version": "7915b8823866cf9e30b0cb7506943665"
+    "version": "f3d8e7db8426585400cb88760ce2bdb4"
 };

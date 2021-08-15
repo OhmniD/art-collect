@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"license": "Apache-2.0",
 	"dependencies": {
-		"sharp": "^0.28.3"
+		"sharp": "^0.28.3",
+		"uuidv4": "^6.2.11"
 	}
 }
