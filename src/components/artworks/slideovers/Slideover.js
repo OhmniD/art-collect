@@ -87,6 +87,7 @@ export default function Slideover({
 										</div>
 										{/* /End replace */}
 									</div>
+									{slideoverSection.component}
 								</div>
 							</div>
 						</Transition.Child>

@@ -34,6 +34,14 @@ export declare class ModelCollectionConnection {
   constructor(init: ModelInit<ModelCollectionConnection>);
 }
 
+type ImageS3InfoMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type ImageMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type MediumMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -48,6 +56,30 @@ type ArtistMetaData = {
 
 type CollectionMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class ImageS3Info {
+  readonly id: string;
+  readonly key: string;
+  readonly height: number;
+  readonly width: number;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<ImageS3Info, ImageS3InfoMetaData>);
+  static copyOf(source: ImageS3Info, mutator: (draft: MutableModel<ImageS3Info, ImageS3InfoMetaData>) => MutableModel<ImageS3Info, ImageS3InfoMetaData> | void): ImageS3Info;
+}
+
+export declare class Image {
+  readonly id: string;
+  readonly artworkID: string;
+  readonly bucket: string;
+  readonly fullsize?: ImageS3Info;
+  readonly thumbnail?: ImageS3Info;
+  readonly isPrimary?: boolean;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Image, ImageMetaData>);
+  static copyOf(source: Image, mutator: (draft: MutableModel<Image, ImageMetaData>) => MutableModel<Image, ImageMetaData> | void): Image;
 }
 
 export declare class Medium {
@@ -68,6 +100,7 @@ export declare class Artwork {
   readonly dimensions?: string;
   readonly mediumID?: string;
   readonly artistID?: string;
+  readonly Images?: (Image | null)[];
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Artwork, ArtworkMetaData>);

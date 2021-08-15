@@ -1,6 +1,218 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getImageS3Info = /* GraphQL */ `
+  query GetImageS3Info($id: ID!) {
+    getImageS3Info(id: $id) {
+      id
+      key
+      height
+      width
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listImageS3Infos = /* GraphQL */ `
+  query ListImageS3Infos(
+    $filter: ModelImageS3InfoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listImageS3Infos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncImageS3Infos = /* GraphQL */ `
+  query SyncImageS3Infos(
+    $filter: ModelImageS3InfoFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncImageS3Infos(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getImage = /* GraphQL */ `
+  query GetImage($id: ID!) {
+    getImage(id: $id) {
+      id
+      artworkID
+      bucket
+      isPrimary
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      fullsize {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      thumbnail {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      owner
+    }
+  }
+`;
+export const listImages = /* GraphQL */ `
+  query ListImages(
+    $filter: ModelImageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listImages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        artworkID
+        bucket
+        isPrimary
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        fullsize {
+          id
+          key
+          height
+          width
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+          owner
+        }
+        thumbnail {
+          id
+          key
+          height
+          width
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+          owner
+        }
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncImages = /* GraphQL */ `
+  query SyncImages(
+    $filter: ModelImageFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncImages(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        artworkID
+        bucket
+        isPrimary
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        fullsize {
+          id
+          key
+          height
+          width
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+          owner
+        }
+        thumbnail {
+          id
+          key
+          height
+          width
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+          owner
+        }
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getMedium = /* GraphQL */ `
   query GetMedium($id: ID!) {
     getMedium(id: $id) {
@@ -214,6 +426,22 @@ export const getArtwork = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      Images {
+        items {
+          id
+          artworkID
+          bucket
+          isPrimary
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
       owner
     }
   }
@@ -238,6 +466,10 @@ export const listArtworks = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+        Images {
+          nextToken
+          startedAt
+        }
         owner
       }
       nextToken
@@ -272,6 +504,10 @@ export const syncArtworks = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+        Images {
+          nextToken
+          startedAt
+        }
         owner
       }
       nextToken

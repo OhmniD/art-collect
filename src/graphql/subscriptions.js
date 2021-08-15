@@ -1,6 +1,174 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateImageS3Info = /* GraphQL */ `
+  subscription OnCreateImageS3Info($owner: String) {
+    onCreateImageS3Info(owner: $owner) {
+      id
+      key
+      height
+      width
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateImageS3Info = /* GraphQL */ `
+  subscription OnUpdateImageS3Info($owner: String) {
+    onUpdateImageS3Info(owner: $owner) {
+      id
+      key
+      height
+      width
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteImageS3Info = /* GraphQL */ `
+  subscription OnDeleteImageS3Info($owner: String) {
+    onDeleteImageS3Info(owner: $owner) {
+      id
+      key
+      height
+      width
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onCreateImage = /* GraphQL */ `
+  subscription OnCreateImage($owner: String) {
+    onCreateImage(owner: $owner) {
+      id
+      artworkID
+      bucket
+      isPrimary
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      fullsize {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      thumbnail {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      owner
+    }
+  }
+`;
+export const onUpdateImage = /* GraphQL */ `
+  subscription OnUpdateImage($owner: String) {
+    onUpdateImage(owner: $owner) {
+      id
+      artworkID
+      bucket
+      isPrimary
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      fullsize {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      thumbnail {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      owner
+    }
+  }
+`;
+export const onDeleteImage = /* GraphQL */ `
+  subscription OnDeleteImage($owner: String) {
+    onDeleteImage(owner: $owner) {
+      id
+      artworkID
+      bucket
+      isPrimary
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      fullsize {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      thumbnail {
+        id
+        key
+        height
+        width
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      owner
+    }
+  }
+`;
 export const onCreateMedium = /* GraphQL */ `
   subscription OnCreateMedium($owner: String) {
     onCreateMedium(owner: $owner) {
@@ -226,6 +394,22 @@ export const onCreateArtwork = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      Images {
+        items {
+          id
+          artworkID
+          bucket
+          isPrimary
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
       owner
     }
   }
@@ -245,6 +429,22 @@ export const onUpdateArtwork = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      Images {
+        items {
+          id
+          artworkID
+          bucket
+          isPrimary
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
       owner
     }
   }
@@ -264,6 +464,22 @@ export const onDeleteArtwork = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      Images {
+        items {
+          id
+          artworkID
+          bucket
+          isPrimary
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
       owner
     }
   }

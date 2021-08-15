@@ -1,3 +1,22 @@
+type ImageS3Info @model @auth(rules: [{ allow: owner }]) {
+	id: ID!
+	key: String!
+	height: Int!
+	width: Int!
+}
+
+type Image
+	@model
+	@auth(rules: [{ allow: owner }])
+	@key(name: "byArtwork", fields: ["artworkID"]) {
+	id: ID!
+	artworkID: ID!
+	bucket: String!
+	fullsize: ImageS3Info @connection
+	thumbnail: ImageS3Info @connection
+	isPrimary: Boolean
+}
+
 type Medium @model @auth(rules: [{ allow: owner }]) {
 	id: ID!
 	medium: String
@@ -25,6 +44,7 @@ type Artwork
 	dimensions: String
 	mediumID: ID
 	artistID: ID
+	Images: [Image] @connection(keyName: "byArtwork", fields: ["id"])
 }
 
 type Collection @model @auth(rules: [{ allow: owner }]) {
@@ -39,12 +59,14 @@ type ModelArtistConnection {
 	scannedCount: Int
 	count: Int
 }
+
 type ModelArtworkConnection {
 	items: [Artwork]
 	nextToken: String
 	scannedCount: Int
 	count: Int
 }
+
 type ModelMediumConnection {
 	items: [Medium]
 	nextToken: String
@@ -58,5 +80,3 @@ type ModelCollectionConnection {
 	scannedCount: Int
 	count: Int
 }
-
-# Adding counts - https://www.riccardosirigu.com/blog/aws-amplify-dynamodb-total-count-graphql-queries/
