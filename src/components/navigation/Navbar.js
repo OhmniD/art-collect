@@ -1,10 +1,11 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { withRouter } from "react-router";
 import { useState } from "react";
 import logo from "../../static/assets/art-collect-logo.png";
+import { Auth, Hub } from "aws-amplify";
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
@@ -49,6 +50,19 @@ const Navbar = (props) => {
 		props.history.push(page);
 	};
 
+	const handleSignOutButtonClick = async () => {
+		try {
+			await Auth.signOut();
+			Hub.dispatch("UI Auth", {
+				// channel must be 'UI Auth'
+				event: "AuthStateChange", // event must be 'AuthStateChange'
+				message: "signedout", // message must be 'signedout'
+			});
+		} catch (error) {
+			console.log("error signing out: ", error);
+		}
+	};
+
 	return (
 		<Disclosure as="nav" className="bg-white shadow">
 			{({ open }) => (
@@ -89,7 +103,7 @@ const Navbar = (props) => {
 								</div>
 							</div>
 							<div className="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
-								<div className="max-w-lg w-full lg:max-w-xs">
+								{/* <div className="max-w-lg w-full lg:max-w-xs">
 									<label htmlFor="search" className="sr-only">
 										Search
 									</label>
@@ -107,8 +121,8 @@ const Navbar = (props) => {
 											placeholder="Search"
 											type="search"
 										/>
-									</div>
-								</div>
+									</div> 
+											</div>*/}
 							</div>
 							<div className="flex items-center lg:hidden">
 								{/* Mobile menu button */}
@@ -122,11 +136,6 @@ const Navbar = (props) => {
 								</Disclosure.Button>
 							</div>
 							<div className="hidden lg:ml-4 lg:flex lg:items-center">
-								<button className="flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-									<span className="sr-only">View notifications</span>
-									<BellIcon className="h-6 w-6" aria-hidden="true" />
-								</button>
-
 								{/* Profile dropdown */}
 								<Menu as="div" className="ml-4 relative flex-shrink-0">
 									{({ open }) => (
@@ -160,7 +169,7 @@ const Navbar = (props) => {
 															<button
 																className={classNames(
 																	active ? "bg-gray-100" : "",
-																	"block px-4 py-2 text-sm text-gray-700"
+																	"flex px-4 py-2 text-sm text-gray-700"
 																)}
 															>
 																Your Profile
@@ -182,6 +191,7 @@ const Navbar = (props) => {
 													<Menu.Item>
 														{({ active }) => (
 															<button
+																onClick={handleSignOutButtonClick}
 																className={classNames(
 																	active ? "bg-gray-100" : "",
 																	"block px-4 py-2 text-sm text-gray-700"
@@ -237,10 +247,6 @@ const Navbar = (props) => {
 										tom@example.com
 									</div>
 								</div>
-								<button className="ml-auto flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-									<span className="sr-only">View notifications</span>
-									<BellIcon className="h-6 w-6" aria-hidden="true" />
-								</button>
 							</div>
 							<div className="mt-3 space-y-1">
 								<button className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
@@ -249,7 +255,10 @@ const Navbar = (props) => {
 								<button className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
 									Settings
 								</button>
-								<button className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
+								<button
+									onClick={handleSignOutButtonClick}
+									className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+								>
 									Sign out
 								</button>
 							</div>
