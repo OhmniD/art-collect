@@ -1,0 +1,12 @@
+{
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "thumbnailWidth",
+      "environmentVariableName": "THUMBNAIL_WIDTH"
+    },
+    {
+      "cloudFormationParameterName": "thumbnailHeight",
+      "environmentVariableName": "THUMBNAIL_HEIGHT"
+    }
+  ]
+}

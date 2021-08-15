@@ -315,20 +315,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "Images": {
-                    "name": "Images",
-                    "isArray": true,
-                    "type": {
-                        "model": "Image"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "artworkID"
-                    }
-                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -708,5 +694,5 @@ export const schema = {
             }
         }
     },
-    "version": "789e3c38b8cd9d7872a9af1e3b9c4434"
+    "version": "7915b8823866cf9e30b0cb7506943665"
 };

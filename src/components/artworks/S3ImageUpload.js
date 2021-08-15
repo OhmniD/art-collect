@@ -10,8 +10,8 @@ const S3ImageUpload = ({ artwork }) => {
 		const fileName = uuid();
 		setUploading(true);
 		const result = await Storage.put(fileName, file, {
-			// customPrefix: { public: "fullsize/" },
-			level: "private",
+			customPrefix: { public: "uploads/" },
+			// level: "private",
 			metadata: { artworkId: artwork.id },
 		});
 		console.log("Uploaded file: ", result);
@@ -26,7 +26,7 @@ const S3ImageUpload = ({ artwork }) => {
 				icon="file image outline"
 				content={uploading ? "Uploading..." : "Add Image"}
 				type="button"
-				class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+				className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 			>
 				Add image
 			</button>

@@ -100,7 +100,6 @@ export declare class Artwork {
   readonly dimensions?: string;
   readonly mediumID?: string;
   readonly artistID?: string;
-  readonly Images?: (Image | null)[];
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Artwork, ArtworkMetaData>);

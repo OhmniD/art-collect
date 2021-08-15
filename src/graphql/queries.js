@@ -426,22 +426,6 @@ export const getArtwork = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
-      Images {
-        items {
-          id
-          artworkID
-          bucket
-          isPrimary
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
       owner
     }
   }
@@ -466,10 +450,6 @@ export const listArtworks = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
-        Images {
-          nextToken
-          startedAt
-        }
         owner
       }
       nextToken
@@ -504,10 +484,6 @@ export const syncArtworks = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
-        Images {
-          nextToken
-          startedAt
-        }
         owner
       }
       nextToken

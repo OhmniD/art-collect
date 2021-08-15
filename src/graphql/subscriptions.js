@@ -394,22 +394,6 @@ export const onCreateArtwork = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
-      Images {
-        items {
-          id
-          artworkID
-          bucket
-          isPrimary
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
       owner
     }
   }
@@ -429,22 +413,6 @@ export const onUpdateArtwork = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
-      Images {
-        items {
-          id
-          artworkID
-          bucket
-          isPrimary
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
       owner
     }
   }
@@ -464,22 +432,6 @@ export const onDeleteArtwork = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
-      Images {
-        items {
-          id
-          artworkID
-          bucket
-          isPrimary
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
       owner
     }
   }

@@ -14,6 +14,18 @@
     "categories": {
       "auth": {
         "artcollect9b800707": {}
+      },
+      "function": {
+        "S3Triggerdd28708d": {
+          "deploymentBucketName": "amplify-artcollect-dev-172111-deployment",
+          "s3Key": "amplify-builds/S3Triggerdd28708d-514a6b6e742f746b4875-build.zip"
+        },
+        "S3Triggerc8a5ec53": {
+          "deploymentBucketName": "amplify-artcollect-dev-172111-deployment",
+          "s3Key": "amplify-builds/S3Triggerc8a5ec53-4444313543486f37494d-build.zip",
+          "thumbnailWidth": "80",
+          "thumbnailHeight": "80"
+        }
       }
     }
   }

@@ -22,7 +22,7 @@ export default function Slideover({
 		<Transition.Root show={slideoverOpen} as={Fragment}>
 			<Dialog
 				as="div"
-				auto-reslideoverOpen="true"
+				auto-reslideoveropen="true"
 				className="fixed inset-0 overflow-hidden"
 				onClose={handleClose}
 			>
