@@ -1,81 +1,5 @@
 export const schema = {
     "models": {
-        "ImageS3Info": {
-            "name": "ImageS3Info",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "key": {
-                    "name": "key",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "height": {
-                    "name": "height",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "width": {
-                    "name": "width",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "ImageS3Infos",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "provider": "userPools",
-                                "ownerField": "owner",
-                                "allow": "owner",
-                                "identityClaim": "cognito:username",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
         "Image": {
             "name": "Image",
             "fields": {
@@ -97,6 +21,24 @@ export const schema = {
                     "name": "bucket",
                     "isArray": false,
                     "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "fullsize": {
+                    "name": "fullsize",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "ImageS3Info"
+                    },
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "thumbnail": {
+                    "name": "thumbnail",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "ImageS3Info"
+                    },
                     "isRequired": true,
                     "attributes": []
                 },
@@ -523,6 +465,32 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {
+        "ImageS3Info": {
+            "name": "ImageS3Info",
+            "fields": {
+                "key": {
+                    "name": "key",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "height": {
+                    "name": "height",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "width": {
+                    "name": "width",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                }
+            }
+        },
         "ModelArtistConnection": {
             "name": "ModelArtistConnection",
             "fields": {
@@ -668,5 +636,5 @@ export const schema = {
             }
         }
     },
-    "version": "f3d8e7db8426585400cb88760ce2bdb4"
+    "version": "226c5cbb00056c8921476cb88ac6184c"
 };

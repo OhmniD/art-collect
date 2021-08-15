@@ -12,7 +12,7 @@ const S3ImageUpload = ({ artwork }) => {
 		const result = await Storage.put(fileName, file, {
 			customPrefix: { public: "uploads/" },
 			// level: "private",
-			metadata: { artworkId: artwork.id },
+			metadata: { artworkId: artwork.id, owner: artwork.owner },
 		});
 		console.log("Uploaded file: ", result);
 		setUploading(false);

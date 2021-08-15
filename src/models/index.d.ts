@@ -2,6 +2,13 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+export declare class ImageS3Info {
+  readonly key: string;
+  readonly height: number;
+  readonly width: number;
+  constructor(init: ModelInit<ImageS3Info>);
+}
+
 export declare class ModelArtistConnection {
   readonly items?: (Artist | null)[];
   readonly nextToken?: string;
@@ -34,10 +41,6 @@ export declare class ModelCollectionConnection {
   constructor(init: ModelInit<ModelCollectionConnection>);
 }
 
-type ImageS3InfoMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
 type ImageMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -58,21 +61,12 @@ type CollectionMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class ImageS3Info {
-  readonly id: string;
-  readonly key: string;
-  readonly height: number;
-  readonly width: number;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<ImageS3Info, ImageS3InfoMetaData>);
-  static copyOf(source: ImageS3Info, mutator: (draft: MutableModel<ImageS3Info, ImageS3InfoMetaData>) => MutableModel<ImageS3Info, ImageS3InfoMetaData> | void): ImageS3Info;
-}
-
 export declare class Image {
   readonly id: string;
   readonly artworkID: string;
   readonly bucket: string;
+  readonly fullsize: ImageS3Info;
+  readonly thumbnail: ImageS3Info;
   readonly isPrimary?: boolean;
   readonly createdAt?: string;
   readonly updatedAt?: string;

@@ -91,6 +91,7 @@ async function processRecord(record) {
 	const id = uuidv4();
 	const item = {
 		id: id,
+		owner: metadata.owner,
 		artworkID: metadata.artworkid,
 		bucket: bucketName,
 		thumbnail: sizes.thumbnail,

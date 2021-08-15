@@ -22,7 +22,7 @@
         },
         "S3Triggerc8a5ec53": {
           "deploymentBucketName": "amplify-artcollect-dev-172111-deployment",
-          "s3Key": "amplify-builds/S3Triggerc8a5ec53-763659542b3447395379-build.zip",
+          "s3Key": "amplify-builds/S3Triggerc8a5ec53-3333534a397145733576-build.zip",
           "thumbnailWidth": "80",
           "thumbnailHeight": "80",
           "dynamodbImagesTableArn": "arn:aws:dynamodb:eu-west-2:394219044273:table/Image-3tmjp37i3ncwfbkkl7dv5e4pm4-dev"

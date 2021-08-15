@@ -4,15 +4,15 @@ import { schema } from './schema';
 
 
 
-const { ImageS3Info, Image, Medium, Artwork, Artist, Collection, ModelArtistConnection, ModelArtworkConnection, ModelMediumConnection, ModelCollectionConnection } = initSchema(schema);
+const { Image, Medium, Artwork, Artist, Collection, ImageS3Info, ModelArtistConnection, ModelArtworkConnection, ModelMediumConnection, ModelCollectionConnection } = initSchema(schema);
 
 export {
-  ImageS3Info,
   Image,
   Medium,
   Artwork,
   Artist,
   Collection,
+  ImageS3Info,
   ModelArtistConnection,
   ModelArtworkConnection,
   ModelMediumConnection,

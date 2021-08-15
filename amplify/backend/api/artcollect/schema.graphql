@@ -1,4 +1,4 @@
-type ImageS3Info @model @auth(rules: [{ allow: owner }]) {
+type ImageS3Info {
 	key: String!
 	height: Int!
 	width: Int!
