@@ -12,6 +12,7 @@ import { CollectionProvider } from "./providers/CollectionProvider";
 import { ArtworkProvider } from "./providers/ArtworkProvider";
 import { ArtistProvider } from "./providers/ArtistProvider";
 import { MediumProvider } from "./providers/MediumProvider";
+import { ImageProvider } from "./providers/ImageProvider";
 
 function App() {
 	//   const [locationKeys, setLocationKeys] = useState([]);
@@ -39,28 +40,29 @@ function App() {
 
 	return (
 		<div>
-			<MediumProvider>
-				<ArtistProvider>
-					<ArtworkProvider>
-						<CollectionProvider>
-							<nav>
-								<Navbar />
-							</nav>
-
-							<main className="py-10 px-10">
-								<Route path="/" exact component={Dashboard} />
-								<Route path="/artworks" component={Artworks} />
-								<Route
-									path="/artwork"
-									render={(props) => <Artwork {...props} />}
-								/>
-								<Route path="/artists" component={Artists} />
-								<Route path="/mediums" component={Mediums} />
-							</main>
-						</CollectionProvider>
-					</ArtworkProvider>
-				</ArtistProvider>
-			</MediumProvider>
+			<ImageProvider>
+				<MediumProvider>
+					<ArtistProvider>
+						<ArtworkProvider>
+							<CollectionProvider>
+								<nav>
+									<Navbar />
+								</nav>
+								<main className="py-10 px-10">
+									<Route path="/" exact component={Dashboard} />
+									<Route path="/artworks" component={Artworks} />
+									<Route
+										path="/artwork"
+										render={(props) => <Artwork {...props} />}
+									/>
+									<Route path="/artists" component={Artists} />
+									<Route path="/mediums" component={Mediums} />
+								</main>
+							</CollectionProvider>
+						</ArtworkProvider>
+					</ArtistProvider>
+				</MediumProvider>
+			</ImageProvider>
 		</div>
 	);
 }

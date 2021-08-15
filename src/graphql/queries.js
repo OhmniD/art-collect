@@ -1,112 +1,28 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getImageS3Info = /* GraphQL */ `
-  query GetImageS3Info($id: ID!) {
-    getImageS3Info(id: $id) {
-      id
-      key
-      height
-      width
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const listImageS3Infos = /* GraphQL */ `
-  query ListImageS3Infos(
-    $filter: ModelImageS3InfoFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listImageS3Infos(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncImageS3Infos = /* GraphQL */ `
-  query SyncImageS3Infos(
-    $filter: ModelImageS3InfoFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncImageS3Infos(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getImage = /* GraphQL */ `
   query GetImage($id: ID!) {
     getImage(id: $id) {
       id
       artworkID
       bucket
+      fullsize {
+        key
+        height
+        width
+      }
+      thumbnail {
+        key
+        height
+        width
+      }
       isPrimary
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      fullsize {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      thumbnail {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
       owner
     }
   }
@@ -122,36 +38,22 @@ export const listImages = /* GraphQL */ `
         id
         artworkID
         bucket
+        fullsize {
+          key
+          height
+          width
+        }
+        thumbnail {
+          key
+          height
+          width
+        }
         isPrimary
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-        fullsize {
-          id
-          key
-          height
-          width
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        thumbnail {
-          id
-          key
-          height
-          width
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
         owner
       }
       nextToken
@@ -176,36 +78,22 @@ export const syncImages = /* GraphQL */ `
         id
         artworkID
         bucket
+        fullsize {
+          key
+          height
+          width
+        }
+        thumbnail {
+          key
+          height
+          width
+        }
         isPrimary
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-        fullsize {
-          id
-          key
-          height
-          width
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        thumbnail {
-          id
-          key
-          height
-          width
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
         owner
       }
       nextToken

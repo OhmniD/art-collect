@@ -1,90 +1,28 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateImageS3Info = /* GraphQL */ `
-  subscription OnCreateImageS3Info($owner: String) {
-    onCreateImageS3Info(owner: $owner) {
-      id
-      key
-      height
-      width
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const onUpdateImageS3Info = /* GraphQL */ `
-  subscription OnUpdateImageS3Info($owner: String) {
-    onUpdateImageS3Info(owner: $owner) {
-      id
-      key
-      height
-      width
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const onDeleteImageS3Info = /* GraphQL */ `
-  subscription OnDeleteImageS3Info($owner: String) {
-    onDeleteImageS3Info(owner: $owner) {
-      id
-      key
-      height
-      width
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
 export const onCreateImage = /* GraphQL */ `
   subscription OnCreateImage($owner: String) {
     onCreateImage(owner: $owner) {
       id
       artworkID
       bucket
+      fullsize {
+        key
+        height
+        width
+      }
+      thumbnail {
+        key
+        height
+        width
+      }
       isPrimary
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      fullsize {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      thumbnail {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
       owner
     }
   }
@@ -95,36 +33,22 @@ export const onUpdateImage = /* GraphQL */ `
       id
       artworkID
       bucket
+      fullsize {
+        key
+        height
+        width
+      }
+      thumbnail {
+        key
+        height
+        width
+      }
       isPrimary
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      fullsize {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      thumbnail {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
       owner
     }
   }
@@ -135,36 +59,22 @@ export const onDeleteImage = /* GraphQL */ `
       id
       artworkID
       bucket
+      fullsize {
+        key
+        height
+        width
+      }
+      thumbnail {
+        key
+        height
+        width
+      }
       isPrimary
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      fullsize {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      thumbnail {
-        id
-        key
-        height
-        width
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
       owner
     }
   }
