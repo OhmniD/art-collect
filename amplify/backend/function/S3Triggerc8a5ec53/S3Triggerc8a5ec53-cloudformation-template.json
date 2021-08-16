@@ -63,14 +63,14 @@
             "ENV": {
               "Ref": "env"
             },
+            "DYNAMODB_IMAGES_TABLE_ARN": {
+              "Ref": "dynamodbImagesTableArn"
+            },
             "THUMBNAIL_WIDTH": {
               "Ref": "thumbnailWidth"
             },
             "THUMBNAIL_HEIGHT": {
               "Ref": "thumbnailHeight"
-            },
-            "DYNAMODB_IMAGES_TABLE_ARN": {
-              "Ref": "dynamodbImagesTableArn"
             }
           }
         },

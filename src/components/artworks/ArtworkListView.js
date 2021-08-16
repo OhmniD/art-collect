@@ -1,6 +1,8 @@
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { AmplifyS3Image } from "@aws-amplify/ui-react";
+import placeholder from "../../static/assets/thumbnail-placeholder.png";
+import logo from "../../static/assets/art-collect-logo.png";
 
 const ArtworkListView = ({ key, artwork, artist, medium, history, image }) => {
   // const handleNavClick = (page) => (event) => history.push(page);
@@ -9,23 +11,15 @@ const ArtworkListView = ({ key, artwork, artist, medium, history, image }) => {
     <tr key={key}>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
-          <div className="flex-shrink-0 h-10 w-10">
-            <AmplifyS3Image
-              key={image.thumbnail.key}
-              imgKey={image.thumbnail.key.replace("public/", "")}
-            />
-            {/* {artworkImages != null ? ( */}
-            {/* <S3Image
-						// key={image.thumbnail.key}
-						// imgKey={artworkImages.thumbnail.key.replace("public/", "")}
-						/> */}
-            {/* ) : null} */}
-            {/* <img
-							className="h-10 w-10 rounded-full"
-							src={artworkImages[0].image}
-							alt=""
-						/> */}
-            {/* {console.log(artworkImages)} */}
+          <div className="flex-shrink-0 h-15 w-15">
+            {image ? (
+              <AmplifyS3Image
+                key={image.thumbnail.key}
+                imgKey={image.thumbnail.key.replace("public/", "")}
+              />
+            ) : (
+              <img src={placeholder} alt=""></img>
+            )}
           </div>
           <div className="ml-4">
             <Link

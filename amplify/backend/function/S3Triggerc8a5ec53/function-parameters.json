@@ -1,16 +1,16 @@
 {
   "environmentVariableList": [
     {
+      "cloudFormationParameterName": "dynamodbImagesTableArn",
+      "environmentVariableName": "DYNAMODB_IMAGES_TABLE_ARN"
+    },
+    {
       "cloudFormationParameterName": "thumbnailWidth",
       "environmentVariableName": "THUMBNAIL_WIDTH"
     },
     {
       "cloudFormationParameterName": "thumbnailHeight",
       "environmentVariableName": "THUMBNAIL_HEIGHT"
-    },
-    {
-      "cloudFormationParameterName": "dynamodbImagesTableArn",
-      "environmentVariableName": "DYNAMODB_IMAGES_TABLE_ARN"
     }
   ]
 }
