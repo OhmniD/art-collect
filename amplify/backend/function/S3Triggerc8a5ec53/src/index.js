@@ -96,9 +96,11 @@ async function processRecord(record) {
 		bucket: bucketName,
 		thumbnail: sizes.thumbnail,
 		fullsize: sizes.fullsize,
+		createdAt: new Date().toISOString(),
+		updatedAt: new Date().toISOString(),
+		_version: 1,
+		_lastChangedAt: Date.now(),
 	};
-	console.log(item);
-	console.log(metadata);
 	await storeImagesInfo(item);
 }
 

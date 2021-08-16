@@ -1,5 +1,5 @@
 import { useLocation } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slideover from "./slideovers/Slideover";
 import ImagesContent from "./slideovers/ImagesContent";
 

@@ -1,7 +1,8 @@
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
+import { AmplifyS3Image } from "@aws-amplify/ui-react";
 
-const ArtworkListView = ({ key, artwork, artist, medium, history }) => {
+const ArtworkListView = ({ key, artwork, artist, medium, history, image }) => {
   // const handleNavClick = (page) => (event) => history.push(page);
 
   return (
@@ -9,17 +10,28 @@ const ArtworkListView = ({ key, artwork, artist, medium, history }) => {
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
           <div className="flex-shrink-0 h-10 w-10">
-            <img
-              className="h-10 w-10 rounded-full"
-              // src={person.image}
-              alt=""
+            <AmplifyS3Image
+              key={image.thumbnail.key}
+              imgKey={image.thumbnail.key.replace("public/", "")}
             />
+            {/* {artworkImages != null ? ( */}
+            {/* <S3Image
+						// key={image.thumbnail.key}
+						// imgKey={artworkImages.thumbnail.key.replace("public/", "")}
+						/> */}
+            {/* ) : null} */}
+            {/* <img
+							className="h-10 w-10 rounded-full"
+							src={artworkImages[0].image}
+							alt=""
+						/> */}
+            {/* {console.log(artworkImages)} */}
           </div>
           <div className="ml-4">
             <Link
               to={{
                 pathname: `/artwork`,
-                state: { artwork, artist, medium },
+                state: { artwork, artist, medium, image },
               }}
             >
               <div className="text-sm font-medium text-gray-900">
