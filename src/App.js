@@ -15,56 +15,33 @@ import { MediumProvider } from "./providers/MediumProvider";
 import { ImageProvider } from "./providers/ImageProvider";
 
 function App() {
-	//   const [locationKeys, setLocationKeys] = useState([]);
-	//   const history = useHistory();
-
-	//   useEffect(() => {
-	//     return history.listen((location) => {
-	//       if (history.action === "PUSH") {
-	//         setLocationKeys([location.key]);
-	//       }
-
-	//       if (history.action === "POP") {
-	//         if (locationKeys[1] === location.key) {
-	//           setLocationKeys(([_, ...keys]) => keys);
-
-	//           // Handle forward event
-	//         } else {
-	//           setLocationKeys((keys) => [location.key, ...keys]);
-
-	//           // Handle back event
-	//         }
-	//       }
-	//     });
-	//   }, [locationKeys]);
-
-	return (
-		<div>
-			<ImageProvider>
-				<MediumProvider>
-					<ArtistProvider>
-						<ArtworkProvider>
-							<CollectionProvider>
-								<nav>
-									<Navbar />
-								</nav>
-								<main className="py-10 px-10">
-									<Route path="/" exact component={Dashboard} />
-									<Route path="/artworks" component={Artworks} />
-									<Route
-										path="/artwork"
-										render={(props) => <Artwork {...props} />}
-									/>
-									<Route path="/artists" component={Artists} />
-									<Route path="/mediums" component={Mediums} />
-								</main>
-							</CollectionProvider>
-						</ArtworkProvider>
-					</ArtistProvider>
-				</MediumProvider>
-			</ImageProvider>
-		</div>
-	);
+  return (
+    <div>
+      <ImageProvider>
+        <MediumProvider>
+          <ArtistProvider>
+            <ArtworkProvider>
+              <CollectionProvider>
+                <nav>
+                  <Navbar />
+                </nav>
+                <main className="py-10 px-10">
+                  <Route path="/" exact component={Dashboard} />
+                  <Route path="/artworks" component={Artworks} />
+                  <Route
+                    path="/artwork"
+                    render={(props) => <Artwork {...props} />}
+                  />
+                  <Route path="/artists" component={Artists} />
+                  <Route path="/mediums" component={Mediums} />
+                </main>
+              </CollectionProvider>
+            </ArtworkProvider>
+          </ArtistProvider>
+        </MediumProvider>
+      </ImageProvider>
+    </div>
+  );
 }
 
 export default withAuthenticator(App);
