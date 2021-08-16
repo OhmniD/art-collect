@@ -2,12 +2,14 @@ import { useContext, useState } from "react";
 // import AddArtistModal from "./AddArtistModal";
 import { ArtistsContext } from "../../providers/ArtistProvider";
 import { ArtworksContext } from "../../providers/ArtworkProvider";
+import { ImagesContext } from "../../providers/ImageProvider";
 import AddArtistModal from "./AddArtistModal";
 import ArtistCard from "./ArtistCard";
 
 export default function Artists() {
   const { artists, setArtists } = useContext(ArtistsContext);
   const { artworks } = useContext(ArtworksContext);
+  const { images } = useContext(ImagesContext);
 
   const [open, setOpen] = useState(false); //sets state of add artist modal
 
@@ -15,8 +17,19 @@ export default function Artists() {
     const artistWorks = artworks.filter(
       (artwork) => artwork.artistID === artist.id
     );
+
+    const artistImage =
+      artistWorks.length > 0
+        ? images.find((image) => image.artworkID === artistWorks[0].id)
+        : null;
+
     return (
-      <ArtistCard key={artist.id} artist={artist} artistWorks={artistWorks} />
+      <ArtistCard
+        key={artist.id}
+        artist={artist}
+        artistWorks={artistWorks}
+        artistImage={artistImage}
+      />
     );
   });
 
