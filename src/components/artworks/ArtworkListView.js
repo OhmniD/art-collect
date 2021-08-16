@@ -2,9 +2,15 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { AmplifyS3Image } from "@aws-amplify/ui-react";
 import placeholder from "../../static/assets/thumbnail-placeholder.png";
-import logo from "../../static/assets/art-collect-logo.png";
 
-const ArtworkListView = ({ key, artwork, artist, medium, history, image }) => {
+const ArtworkListView = ({
+  key,
+  artwork,
+  artist,
+  medium,
+  history,
+  artworkImages,
+}) => {
   // const handleNavClick = (page) => (event) => history.push(page);
 
   return (
@@ -12,20 +18,24 @@ const ArtworkListView = ({ key, artwork, artist, medium, history, image }) => {
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
           <div className="flex-shrink-0 h-15 w-15">
-            {image ? (
+            {artworkImages.length ? (
               <AmplifyS3Image
-                key={image.thumbnail.key}
-                imgKey={image.thumbnail.key.replace("public/", "")}
+                key={artworkImages[0].thumbnail.key}
+                imgKey={artworkImages[0].thumbnail.key.replace("public/", "")}
               />
             ) : (
               <img src={placeholder} alt=""></img>
             )}
           </div>
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="flex items-center">
           <div className="ml-4">
             <Link
               to={{
                 pathname: `/artwork`,
-                state: { artwork, artist, medium, image },
+                state: { artwork, artist, medium, artworkImages },
               }}
             >
               <div className="text-sm font-medium text-gray-900">
@@ -46,7 +56,7 @@ const ArtworkListView = ({ key, artwork, artist, medium, history, image }) => {
         </span>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        {/* {person.role} */}
+        {artwork.dimensions}
       </td>
     </tr>
   );
