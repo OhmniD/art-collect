@@ -1,6 +1,7 @@
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { AmplifyS3Image } from "@aws-amplify/ui-react";
+import DeleteArtwork from "./DeleteArtwork";
 import placeholder from "../../static/assets/thumbnail-placeholder.png";
 
 const ArtworkListView = ({
@@ -56,6 +57,9 @@ const ArtworkListView = ({
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         {artwork.dimensions}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <DeleteArtwork artwork={artwork} artworkImages={artworkImages} />
       </td>
     </tr>
   );
