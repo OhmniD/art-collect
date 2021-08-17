@@ -1,3 +1,5 @@
+import DeleteMedium from "./DeleteMedium";
+
 const Medium = ({ medium, index, mediumWorks }) => {
 	return (
 		<tr key={medium.id} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
@@ -8,6 +10,9 @@ const Medium = ({ medium, index, mediumWorks }) => {
 				<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
 					{mediumWorks.length}
 				</span>
+			</td>
+			<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+				<DeleteMedium medium={medium} />
 			</td>
 		</tr>
 	);
