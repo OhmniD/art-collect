@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { API } from "aws-amplify";
 import { createArtwork } from "../../graphql/mutations";
 import S3ImageUpload from "./S3ImageUpload";
+import { ArtworksContext } from "../../providers/ArtworkProvider";
 // import { Artwork } from "../../models";
 
 const AddArtwork = ({
@@ -15,6 +16,7 @@ const AddArtwork = ({
   cancelButtonRef,
 }) => {
   const [formData, setFormData] = useState({});
+  const { artworkCount, setArtworkCount } = useContext(ArtworksContext);
 
   const handleChange = (evt) => {
     formData[evt.target.id] = evt.target.value;
@@ -48,6 +50,7 @@ const AddArtwork = ({
     );
 
     setArtworks([...artworks, addedData.data.createArtwork]);
+    setArtworkCount(artworkCount + 1);
   };
 
   const artistOptions = artists.map((artist, index) => {

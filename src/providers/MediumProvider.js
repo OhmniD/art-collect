@@ -24,7 +24,9 @@ export const MediumProvider = (props) => {
   }, []);
 
   return (
-    <MediumsContext.Provider value={{ mediums, setMediums, mediumCount }}>
+    <MediumsContext.Provider
+      value={{ mediums, setMediums, mediumCount, setMediumCount }}
+    >
       {props.children}
     </MediumsContext.Provider>
   );

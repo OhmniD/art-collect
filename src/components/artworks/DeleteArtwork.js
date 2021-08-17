@@ -7,7 +7,8 @@ import { ArtworksContext } from "../../providers/ArtworkProvider";
 import { useContext } from "react";
 
 const DeleteArtwork = ({ artworkImages, artwork }) => {
-  const { artworks, setArtworks } = useContext(ArtworksContext);
+  const { artworks, setArtworks, artworkCount, setArtworkCount } =
+    useContext(ArtworksContext);
 
   const handleDeleteClick = async () => {
     artworkImages.map(async (image) => {
@@ -34,6 +35,7 @@ const DeleteArtwork = ({ artworkImages, artwork }) => {
       1
     );
     setArtworks(tempArray);
+    setArtworkCount(artworkCount - 1);
   };
 
   return (

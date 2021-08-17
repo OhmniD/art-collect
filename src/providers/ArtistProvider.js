@@ -25,7 +25,9 @@ export const ArtistProvider = (props) => {
   }, []);
 
   return (
-    <ArtistsContext.Provider value={{ artists, setArtists, artistCount }}>
+    <ArtistsContext.Provider
+      value={{ artists, setArtists, artistCount, setArtistCount }}
+    >
       {props.children}
     </ArtistsContext.Provider>
   );
