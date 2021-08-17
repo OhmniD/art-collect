@@ -44,6 +44,7 @@ const AddArtwork = ({
       artistID: formData.artist,
       referenceNumber: referenceNumber,
       year: formData.year,
+      type: formData.type,
     };
 
     const addedData = await API.graphql({
@@ -138,6 +139,23 @@ const AddArtwork = ({
           id="year"
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-auto sm:text-sm border-gray-300 rounded-md"
           placeholder="2021"
+        />
+      </div>
+      <label
+        htmlFor="type"
+        className="flex text-sm font-medium text-gray-700 mt-1"
+      >
+        Type
+      </label>
+      <div className="mt-1">
+        <input
+          required
+          onChange={handleChange}
+          type="text"
+          name="type"
+          id="type"
+          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-auto sm:text-sm border-gray-300 rounded-md"
+          placeholder="Sculpture"
         />
       </div>
       <div>
