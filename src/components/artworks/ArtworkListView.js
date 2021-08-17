@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 import { AmplifyS3Image } from "@aws-amplify/ui-react";
 import DeleteArtwork from "./DeleteArtwork";
 import placeholder from "../../static/assets/thumbnail-placeholder.png";
+import { useState, useEffect, createContext } from "react";
 
-const ArtworkListView = ({
-  key,
-  artwork,
-  artist,
-  medium,
-  history,
-  artworkImages,
-}) => {
+const ArtworkListView = ({ key, artwork, artist, medium, history, images }) => {
   // const handleNavClick = (page) => (event) => history.push(page);
+
+  const [artworkImages, setArtworkImages] = useState([]);
+
+  useEffect(() => {
+    const filteredImages = images.filter(
+      (image) => image.artworkID === artwork.id
+    );
+    setArtworkImages(filteredImages);
+  }, [images]);
 
   return (
     <tr key={key}>
@@ -36,7 +39,12 @@ const ArtworkListView = ({
             <Link
               to={{
                 pathname: `/artwork`,
-                state: { artwork, artist, medium, artworkImages },
+                state: {
+                  artwork,
+                  artist,
+                  medium,
+                  artworkImages,
+                },
               }}
             >
               <div className="text-sm font-medium text-gray-900">

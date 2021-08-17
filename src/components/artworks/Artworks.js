@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ArtworkListView from "./ArtworkListView";
 import { ArtistsContext } from "../../providers/ArtistProvider";
 import { ArtworksContext } from "../../providers/ArtworkProvider";
@@ -17,35 +17,35 @@ export default function Artworks(props) {
   // const linked = useLocation().state;
 
   const [open, setOpen] = useState(false); //sets state of add artwork modal
-
+  const [artworkNodes, setArtworkNodes] = useState([]);
   // if (linked.artworks != null) {
   //   console.log("Artwork props here!");
   // } else {
   //   console.log("No props passed down");
   // }
 
-  const artworkNodes = artworks.map((artwork) => {
-    const artist = artists.find(function (artist) {
-      return artist.id === artwork.artistID;
-    });
+  useEffect(() => {
+    const artworkNodes = artworks.map((artwork) => {
+      const artist = artists.find(function (artist) {
+        return artist.id === artwork.artistID;
+      });
 
-    const medium = mediums.find(function (medium) {
-      return medium.id === artwork.mediumID;
-    });
+      const medium = mediums.find(function (medium) {
+        return medium.id === artwork.mediumID;
+      });
 
-    const artworkImages = images.filter(
-      (image) => image.artworkID === artwork.id
-    );
-    return (
-      <ArtworkListView
-        key={artwork.id}
-        artwork={artwork}
-        artist={artist}
-        medium={medium}
-        artworkImages={artworkImages}
-      />
-    );
-  });
+      return (
+        <ArtworkListView
+          key={artwork.id}
+          artwork={artwork}
+          artist={artist}
+          medium={medium}
+          images={images}
+        />
+      );
+    });
+    setArtworkNodes(artworkNodes);
+  }, [images, artworks, mediums, artists]);
 
   return (
     <div>

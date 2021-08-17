@@ -1,9 +1,21 @@
 import { v4 as uuid } from "uuid";
 import Amplify, { Storage } from "aws-amplify";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { ArtworksContext } from "../../providers/ArtworkProvider";
+import { ImagesContext } from "../../providers/ImageProvider";
+import { API, graphqlOperation } from "aws-amplify";
+import { listImages } from "../../graphql/queries";
 
-const S3ImageUpload = ({ artwork }) => {
+const S3ImageUpload = ({ artwork, artworkImages }) => {
+  const { images, setImages } = useContext(ImagesContext);
   const [uploading, setUploading] = useState(false);
+  const [lastImageUUID, setLastImageUUID] = useState("");
+
+  useEffect(() => {
+    if (uploading === false && lastImageUUID) {
+      addImageToState(lastImageUUID);
+    }
+  }, [lastImageUUID]);
 
   const onChange = async (evt) => {
     const file = evt.target.files[0];
@@ -16,6 +28,25 @@ const S3ImageUpload = ({ artwork }) => {
     });
     console.log("Uploaded file: ", result);
     setUploading(false);
+    setLastImageUUID(result);
+  };
+
+  const addImageToState = (lastImageUUID) => {
+    setTimeout(async () => {
+      const imageData = await API.graphql({
+        query: listImages,
+        variables: { filter: { artworkID: { eq: artwork.id } } },
+      });
+      console.log(lastImageUUID);
+      const addedImage = imageData.data.listImages.items.find(
+        (image) =>
+          image.fullsize.key.replace("public/", "") === lastImageUUID.key
+      );
+      console.log(addedImage);
+      setImages([...images, addedImage]);
+      console.log(artworkImages);
+      setLastImageUUID("");
+    }, 5000);
   };
 
   return (
