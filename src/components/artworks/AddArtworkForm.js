@@ -45,6 +45,7 @@ const AddArtwork = ({
       referenceNumber: referenceNumber,
       year: formData.year,
       type: formData.type,
+      signed: formData.signed === "on" ? true : false,
     };
 
     const addedData = await API.graphql({
@@ -157,6 +158,23 @@ const AddArtwork = ({
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-auto sm:text-sm border-gray-300 rounded-md"
           placeholder="Sculpture"
         />
+      </div>
+      <div className="relative flex items-start">
+        <div className="mt-2 text-sm">
+          <div className="flex items-center h-5">
+            <input
+              onChange={handleChange}
+              id="signed"
+              aria-describedby="signed-description"
+              name="signed"
+              type="checkbox"
+              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+            />
+            <label htmlFor="signed" className="ml-3 font-sm text-gray-700">
+              Signed by artist?
+            </label>
+          </div>
+        </div>
       </div>
       <div>
         <label
