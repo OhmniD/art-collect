@@ -13,35 +13,38 @@ import { ArtworkProvider } from "./providers/ArtworkProvider";
 import { ArtistProvider } from "./providers/ArtistProvider";
 import { MediumProvider } from "./providers/MediumProvider";
 import { ImageProvider } from "./providers/ImageProvider";
+import { ArtworkImageProvider } from "./providers/ArtworkImageProvider";
 
 function App() {
-  return (
-    <div>
-      <ImageProvider>
-        <MediumProvider>
-          <ArtistProvider>
-            <ArtworkProvider>
-              <CollectionProvider>
-                <nav>
-                  <Navbar />
-                </nav>
-                <main className="py-10 px-10">
-                  <Route path="/" exact component={Dashboard} />
-                  <Route path="/artworks" component={Artworks} />
-                  <Route
-                    path="/artwork"
-                    render={(props) => <Artwork {...props} />}
-                  />
-                  <Route path="/artists" component={Artists} />
-                  <Route path="/mediums" component={Mediums} />
-                </main>
-              </CollectionProvider>
-            </ArtworkProvider>
-          </ArtistProvider>
-        </MediumProvider>
-      </ImageProvider>
-    </div>
-  );
+	return (
+		<div>
+			<ImageProvider>
+				<MediumProvider>
+					<ArtistProvider>
+						<ArtworkProvider>
+							<ArtworkImageProvider>
+								<CollectionProvider>
+									<nav>
+										<Navbar />
+									</nav>
+									<main className="py-10 px-10">
+										<Route path="/" exact component={Dashboard} />
+										<Route path="/artworks" component={Artworks} />
+										<Route
+											path="/artwork"
+											render={(props) => <Artwork {...props} />}
+										/>
+										<Route path="/artists" component={Artists} />
+										<Route path="/mediums" component={Mediums} />
+									</main>
+								</CollectionProvider>
+							</ArtworkImageProvider>
+						</ArtworkProvider>
+					</ArtistProvider>
+				</MediumProvider>
+			</ImageProvider>
+		</div>
+	);
 }
 
 export default withAuthenticator(App);

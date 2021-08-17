@@ -1,8 +1,9 @@
 import { useLocation } from "react-router";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Slideover from "./slideovers/Slideover";
 import ImagesContent from "./slideovers/ImagesContent";
 import ArtworkInfo from "./ArtworkInfo";
+import { ArtworkImagesContext } from "../../providers/ArtworkImageProvider";
 
 import {
 	PhotographIcon,
@@ -18,7 +19,9 @@ function classNames(...classes) {
 }
 
 export default function Artwork() {
-	const { artwork, artist, medium, artworkImages } = useLocation().state;
+	const { artworkImages, setArtworkImages } = useContext(ArtworkImagesContext);
+
+	const { artwork, artist, medium } = useLocation().state;
 
 	const [navigation, setNavigation] = useState([
 		{
@@ -26,9 +29,7 @@ export default function Artwork() {
 			icon: PhotographIcon,
 			current: false,
 			id: "artwork-images",
-			component: (
-				<ImagesContent artwork={artwork} artworkImages={artworkImages} />
-			),
+			component: <ImagesContent artwork={artwork} />,
 		},
 		{
 			name: "Loans & Consignment",

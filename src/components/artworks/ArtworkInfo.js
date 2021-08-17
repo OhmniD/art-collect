@@ -1,4 +1,5 @@
 import { AmplifyS3Image } from "@aws-amplify/ui-react";
+import placeholder from "../../static/assets/thumbnail-placeholder.png";
 
 export default function ArtworkInfo({
 	artwork,
@@ -6,7 +7,16 @@ export default function ArtworkInfo({
 	medium,
 	artworkImages,
 }) {
-	const image = artworkImages[0];
+	const image =
+		artworkImages.length > 0 ? (
+			<AmplifyS3Image
+				style={{ "--height": "450px" }}
+				key={artworkImages[0].fullsize.key}
+				imgKey={artworkImages[0].fullsize.key.replace("public/", "")}
+			/>
+		) : (
+			<img classname="shadow" src={placeholder} alt=""></img>
+		);
 
 	return (
 		<div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -28,13 +38,7 @@ export default function ArtworkInfo({
 						<dt className="text-sm font-medium text-gray-500">Type</dt>
 						<dd className="mt-1 text-sm text-gray-900">{artwork.type}</dd>
 					</div>
-					<div className="sm:col-span-1 sm:row-span-4">
-						<AmplifyS3Image
-							style={{ "--height": "450px" }}
-							key={image.fullsize.key}
-							imgKey={image.fullsize.key.replace("public/", "")}
-						/>
-					</div>
+					<div className="sm:col-span-1 sm:row-span-4">{image}</div>
 					<div className="sm:col-span-1">
 						<dt className="text-sm font-medium text-gray-500">
 							Reference Number
