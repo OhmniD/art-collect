@@ -6,21 +6,28 @@ import { MediumsContext } from "../../providers/MediumProvider";
 import { CollectionContext } from "../../providers/CollectionProvider";
 import { ImagesContext } from "../../providers/ImageProvider";
 import AddArtworkModal from "./AddArtworkModal";
+import { useLocation } from "react-router";
 
-export default function Artworks() {
+export default function Artworks(props) {
   const { artists } = useContext(ArtistsContext);
   const { artworks, setArtworks } = useContext(ArtworksContext);
   const { mediums } = useContext(MediumsContext);
   const { collection } = useContext(CollectionContext);
   const { images } = useContext(ImagesContext);
+  // const linked = useLocation().state;
 
   const [open, setOpen] = useState(false); //sets state of add artwork modal
+
+  // if (linked.artworks != null) {
+  //   console.log("Artwork props here!");
+  // } else {
+  //   console.log("No props passed down");
+  // }
 
   const artworkNodes = artworks.map((artwork) => {
     const artist = artists.find(function (artist) {
       return artist.id === artwork.artistID;
     });
-    // console.log(artist);
 
     const medium = mediums.find(function (medium) {
       return medium.id === artwork.mediumID;

@@ -11,6 +11,7 @@ import {
   LibraryIcon,
   DocumentTextIcon,
 } from "@heroicons/react/outline";
+import DeleteArtwork from "./DeleteArtwork";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -109,6 +110,7 @@ export default function Artwork() {
         <h1>{artwork.title}</h1>
         <h2>{artist.name}</h2>
         <h3>{medium.medium}</h3>
+        <DeleteArtwork artwork={artwork} artworkImages={artworkImages} />
         <Slideover
           slideoverOpen={slideoverOpen}
           setSlideoverOpen={setSlideoverOpen}

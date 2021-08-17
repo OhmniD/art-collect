@@ -18,9 +18,6 @@ export const getImage = /* GraphQL */ `
         width
       }
       isPrimary
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -49,55 +46,11 @@ export const listImages = /* GraphQL */ `
           width
         }
         isPrimary
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncImages = /* GraphQL */ `
-  query SyncImages(
-    $filter: ModelImageFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncImages(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        artworkID
-        bucket
-        fullsize {
-          key
-          height
-          width
-        }
-        thumbnail {
-          key
-          height
-          width
-        }
-        isPrimary
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -106,9 +59,6 @@ export const getMedium = /* GraphQL */ `
     getMedium(id: $id) {
       id
       medium
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -121,9 +71,6 @@ export const getMedium = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -145,43 +92,6 @@ export const listMediums = /* GraphQL */ `
       items {
         id
         medium
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-        ArtworksMedium {
-          nextToken
-          scannedCount
-          count
-        }
-      }
-      nextToken
-      scannedCount
-      count
-    }
-  }
-`;
-export const syncMediums = /* GraphQL */ `
-  query SyncMediums(
-    $filter: ModelMediumFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncMediums(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        medium
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -204,9 +114,6 @@ export const getArtist = /* GraphQL */ `
       name
       artistStartYear
       artistEndYear
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -219,9 +126,6 @@ export const getArtist = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -245,45 +149,6 @@ export const listArtists = /* GraphQL */ `
         name
         artistStartYear
         artistEndYear
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-        ArtworksArtist {
-          nextToken
-          scannedCount
-          count
-        }
-      }
-      nextToken
-      scannedCount
-      count
-    }
-  }
-`;
-export const syncArtists = /* GraphQL */ `
-  query SyncArtists(
-    $filter: ModelArtistFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncArtists(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        artistStartYear
-        artistEndYear
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -309,9 +174,6 @@ export const getArtwork = /* GraphQL */ `
       dimensions
       mediumID
       artistID
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -333,43 +195,6 @@ export const listArtworks = /* GraphQL */ `
         dimensions
         mediumID
         artistID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      scannedCount
-      count
-    }
-  }
-`;
-export const syncArtworks = /* GraphQL */ `
-  query SyncArtworks(
-    $filter: ModelArtworkFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncArtworks(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        collectionID
-        title
-        creationDate
-        dimensions
-        mediumID
-        artistID
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -384,9 +209,6 @@ export const getCollection = /* GraphQL */ `
   query GetCollection($id: ID!) {
     getCollection(id: $id) {
       id
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       ArtworksCollection {
@@ -398,9 +220,6 @@ export const getCollection = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -422,42 +241,6 @@ export const listCollections = /* GraphQL */ `
     listCollections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        ArtworksCollection {
-          nextToken
-          scannedCount
-          count
-        }
-        owner
-      }
-      nextToken
-      scannedCount
-      count
-    }
-  }
-`;
-export const syncCollections = /* GraphQL */ `
-  query SyncCollections(
-    $filter: ModelCollectionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncCollections(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         ArtworksCollection {

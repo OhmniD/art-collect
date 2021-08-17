@@ -18,9 +18,6 @@ export const onCreateImage = /* GraphQL */ `
         width
       }
       isPrimary
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -44,9 +41,6 @@ export const onUpdateImage = /* GraphQL */ `
         width
       }
       isPrimary
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -70,9 +64,6 @@ export const onDeleteImage = /* GraphQL */ `
         width
       }
       isPrimary
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -84,9 +75,6 @@ export const onCreateMedium = /* GraphQL */ `
     onCreateMedium(owner: $owner) {
       id
       medium
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -99,9 +87,6 @@ export const onCreateMedium = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -118,9 +103,6 @@ export const onUpdateMedium = /* GraphQL */ `
     onUpdateMedium(owner: $owner) {
       id
       medium
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -133,9 +115,6 @@ export const onUpdateMedium = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -152,9 +131,6 @@ export const onDeleteMedium = /* GraphQL */ `
     onDeleteMedium(owner: $owner) {
       id
       medium
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -167,9 +143,6 @@ export const onDeleteMedium = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -188,9 +161,6 @@ export const onCreateArtist = /* GraphQL */ `
       name
       artistStartYear
       artistEndYear
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -203,9 +173,6 @@ export const onCreateArtist = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -224,9 +191,6 @@ export const onUpdateArtist = /* GraphQL */ `
       name
       artistStartYear
       artistEndYear
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -239,9 +203,6 @@ export const onUpdateArtist = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -260,9 +221,6 @@ export const onDeleteArtist = /* GraphQL */ `
       name
       artistStartYear
       artistEndYear
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -275,9 +233,6 @@ export const onDeleteArtist = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -299,9 +254,6 @@ export const onCreateArtwork = /* GraphQL */ `
       dimensions
       mediumID
       artistID
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -318,9 +270,6 @@ export const onUpdateArtwork = /* GraphQL */ `
       dimensions
       mediumID
       artistID
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -337,9 +286,6 @@ export const onDeleteArtwork = /* GraphQL */ `
       dimensions
       mediumID
       artistID
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -350,9 +296,6 @@ export const onCreateCollection = /* GraphQL */ `
   subscription OnCreateCollection($owner: String) {
     onCreateCollection(owner: $owner) {
       id
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       ArtworksCollection {
@@ -364,9 +307,6 @@ export const onCreateCollection = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -383,9 +323,6 @@ export const onUpdateCollection = /* GraphQL */ `
   subscription OnUpdateCollection($owner: String) {
     onUpdateCollection(owner: $owner) {
       id
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       ArtworksCollection {
@@ -397,9 +334,6 @@ export const onUpdateCollection = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -416,9 +350,6 @@ export const onDeleteCollection = /* GraphQL */ `
   subscription OnDeleteCollection($owner: String) {
     onDeleteCollection(owner: $owner) {
       id
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       ArtworksCollection {
@@ -430,9 +361,6 @@ export const onDeleteCollection = /* GraphQL */ `
           dimensions
           mediumID
           artistID
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
