@@ -21,7 +21,9 @@ const ImagesContent = ({ artwork, artworkImages }) => {
   return (
     <div>
       <S3ImageUpload artwork={artwork} artworkImages={artworkImages} />
-      {imageNodes}
+      <div className="bg-white shadow overflow-hidden sm:rounded-lg p-2">
+        {imageNodes}
+      </div>
     </div>
   );
 };
