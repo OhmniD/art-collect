@@ -87,6 +87,10 @@ export const onCreateMedium = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -115,6 +119,10 @@ export const onUpdateMedium = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -143,6 +151,10 @@ export const onDeleteMedium = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -173,6 +185,10 @@ export const onCreateArtist = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -203,6 +219,10 @@ export const onUpdateArtist = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -233,6 +253,10 @@ export const onDeleteArtist = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -254,6 +278,10 @@ export const onCreateArtwork = /* GraphQL */ `
       dimensions
       mediumID
       artistID
+      year
+      signed
+      type
+      referenceNumber
       createdAt
       updatedAt
       owner
@@ -270,6 +298,10 @@ export const onUpdateArtwork = /* GraphQL */ `
       dimensions
       mediumID
       artistID
+      year
+      signed
+      type
+      referenceNumber
       createdAt
       updatedAt
       owner
@@ -286,6 +318,10 @@ export const onDeleteArtwork = /* GraphQL */ `
       dimensions
       mediumID
       artistID
+      year
+      signed
+      type
+      referenceNumber
       createdAt
       updatedAt
       owner
@@ -307,6 +343,10 @@ export const onCreateCollection = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -334,6 +374,10 @@ export const onUpdateCollection = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -361,6 +405,10 @@ export const onDeleteCollection = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner

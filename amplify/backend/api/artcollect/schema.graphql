@@ -1,80 +1,84 @@
 type ImageS3Info {
-	key: String!
-	height: Int!
-	width: Int!
+  key: String!
+  height: Int!
+  width: Int!
 }
 
 type Image
-	@model
-	@auth(rules: [{ allow: owner }])
-	@key(name: "byArtwork", fields: ["artworkID"]) {
-	id: ID!
-	artworkID: ID!
-	bucket: String!
-	fullsize: ImageS3Info!
-	thumbnail: ImageS3Info!
-	isPrimary: Boolean
+  @model
+  @auth(rules: [{ allow: owner }])
+  @key(name: "byArtwork", fields: ["artworkID"]) {
+  id: ID!
+  artworkID: ID!
+  bucket: String!
+  fullsize: ImageS3Info!
+  thumbnail: ImageS3Info!
+  isPrimary: Boolean
 }
 
 type Medium @model @auth(rules: [{ allow: owner }]) {
-	id: ID!
-	medium: String
-	ArtworksMedium: [Artwork] @connection(keyName: "byMedium", fields: ["id"])
+  id: ID!
+  medium: String
+  ArtworksMedium: [Artwork] @connection(keyName: "byMedium", fields: ["id"])
 }
 
 type Artist @model @auth(rules: [{ allow: owner }]) {
-	id: ID!
-	name: String!
-	artistStartYear: Int
-	artistEndYear: Int
-	ArtworksArtist: [Artwork] @connection(keyName: "byArtist", fields: ["id"])
+  id: ID!
+  name: String!
+  artistStartYear: Int
+  artistEndYear: Int
+  ArtworksArtist: [Artwork] @connection(keyName: "byArtist", fields: ["id"])
 }
 
 type Artwork
-	@model
-	@key(name: "byCollection", fields: ["collectionID"])
-	@auth(rules: [{ allow: owner }])
-	@key(name: "byMedium", fields: ["mediumID"])
-	@key(name: "byArtist", fields: ["artistID"]) {
-	id: ID!
-	collectionID: ID
-	title: String!
-	creationDate: AWSDate
-	dimensions: String
-	mediumID: ID
-	artistID: ID
+  @model
+  @key(name: "byCollection", fields: ["collectionID"])
+  @auth(rules: [{ allow: owner }])
+  @key(name: "byMedium", fields: ["mediumID"])
+  @key(name: "byArtist", fields: ["artistID"]) {
+  id: ID!
+  collectionID: ID
+  title: String!
+  creationDate: AWSDate
+  dimensions: String
+  mediumID: ID
+  artistID: ID
+  year: Int
+  signed: Boolean
+  type: String
+  referenceNumber: String
 }
 
 type Collection @model @auth(rules: [{ allow: owner }]) {
-	id: ID!
-	ArtworksCollection: [Artwork]
-		@connection(keyName: "byCollection", fields: ["id"])
+  id: ID!
+  ArtworksCollection: [Artwork]
+    @connection(keyName: "byCollection", fields: ["id"])
 }
 
 type ModelArtistConnection {
-	items: [Artist]
-	nextToken: String
-	scannedCount: Int
-	count: Int
+  items: [Artist]
+  nextToken: String
+  scannedCount: Int
+  count: Int
 }
 type ModelArtworkConnection {
-	items: [Artwork]
-	nextToken: String
-	scannedCount: Int
-	count: Int
+  items: [Artwork]
+  nextToken: String
+  scannedCount: Int
+  count: Int
 }
 type ModelMediumConnection {
-	items: [Medium]
-	nextToken: String
-	scannedCount: Int
-	count: Int
+  items: [Medium]
+  nextToken: String
+  scannedCount: Int
+  count: Int
 }
 
 type ModelCollectionConnection {
-	items: [Collection]
-	nextToken: String
-	scannedCount: Int
-	count: Int
+  items: [Collection]
+  nextToken: String
+  scannedCount: Int
+  count: Int
 }
 
 # Adding counts - https://www.riccardosirigu.com/blog/aws-amplify-dynamodb-total-count-graphql-queries/

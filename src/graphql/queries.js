@@ -71,6 +71,10 @@ export const getMedium = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -126,6 +130,10 @@ export const getArtist = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner
@@ -174,6 +182,10 @@ export const getArtwork = /* GraphQL */ `
       dimensions
       mediumID
       artistID
+      year
+      signed
+      type
+      referenceNumber
       createdAt
       updatedAt
       owner
@@ -195,6 +207,10 @@ export const listArtworks = /* GraphQL */ `
         dimensions
         mediumID
         artistID
+        year
+        signed
+        type
+        referenceNumber
         createdAt
         updatedAt
         owner
@@ -220,6 +236,10 @@ export const getCollection = /* GraphQL */ `
           dimensions
           mediumID
           artistID
+          year
+          signed
+          type
+          referenceNumber
           createdAt
           updatedAt
           owner

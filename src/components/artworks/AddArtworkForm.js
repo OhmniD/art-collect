@@ -26,12 +26,24 @@ const AddArtwork = ({
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
+    const artist = artists.find((artist) => artist.id === formData.artist);
+
+    const randomNumber = Math.floor(Math.random() * 100000);
+    const referenceNumber =
+      artist.name
+        .split(" ")
+        .map((name) => name.substr(0, 2).toUpperCase())
+        .reverse()
+        .join("") + randomNumber;
+
     const artwork = {
       title: formData.title,
       dimensions: formData.dimensions,
       collectionID: collection.id,
       mediumID: formData.medium,
       artistID: formData.artist,
+      referenceNumber: referenceNumber,
+      year: formData.year,
     };
 
     const addedData = await API.graphql({
@@ -109,6 +121,23 @@ const AddArtwork = ({
           id="dimensions"
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-auto sm:text-sm border-gray-300 rounded-md"
           placeholder="W mm x H mm x D mm"
+        />
+      </div>
+      <label
+        htmlFor="year"
+        className="flex text-sm font-medium text-gray-700 mt-1"
+      >
+        Year
+      </label>
+      <div className="mt-1">
+        <input
+          required
+          onChange={handleChange}
+          type="number"
+          name="year"
+          id="year"
+          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-auto sm:text-sm border-gray-300 rounded-md"
+          placeholder="2021"
         />
       </div>
       <div>
