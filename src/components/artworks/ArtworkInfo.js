@@ -7,19 +7,22 @@ export default function ArtworkInfo({
   medium,
   artworkImages,
 }) {
-  const image =
-    artworkImages[artwork.id].length > 0 ? (
-      <AmplifyS3Image
-        style={{ "--height": "450px" }}
-        key={artworkImages[artwork.id][0].fullsize.key}
-        imgKey={artworkImages[artwork.id][0].fullsize.key.replace(
-          "public/",
-          ""
-        )}
-      />
-    ) : (
-      <img classname="shadow" src={placeholder} alt=""></img>
-    );
+  let image;
+  if (artworkImages[artwork.id]) {
+    image =
+      artworkImages[artwork.id].length > 0 ? (
+        <AmplifyS3Image
+          style={{ "--height": "450px" }}
+          key={artworkImages[artwork.id][0].fullsize.key}
+          imgKey={artworkImages[artwork.id][0].fullsize.key.replace(
+            "public/",
+            ""
+          )}
+        />
+      ) : (
+        <img classname="shadow" src={placeholder} alt=""></img>
+      );
+  }
 
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -41,7 +44,9 @@ export default function ArtworkInfo({
             <dt className="text-sm font-medium text-gray-500">Type</dt>
             <dd className="mt-1 text-sm text-gray-900">{artwork.type}</dd>
           </div>
-          <div className="sm:col-span-1 sm:row-span-4">{image}</div>
+          <div className="sm:col-span-1 sm:row-span-4">
+            {artworkImages[artwork.id] ? image : null}
+          </div>
           <div className="sm:col-span-1">
             <dt className="text-sm font-medium text-gray-500">
               Reference Number

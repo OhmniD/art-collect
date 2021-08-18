@@ -9,7 +9,12 @@ const S3UploadProgressBar = ({ uploadProgress }) => {
         </div>
         <div className="text-right">
           <span className="text-xs font-semibold inline-block text-indigo-600">
-            {Math.floor((uploadProgress.loaded / uploadProgress.total) * 100)} %
+            {!uploadProgress.total
+              ? "0 %"
+              : Math.floor(
+                  (uploadProgress.loaded / uploadProgress.total) * 100
+                )}{" "}
+            %
           </span>
         </div>
       </div>

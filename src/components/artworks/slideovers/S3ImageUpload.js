@@ -52,7 +52,7 @@ const S3ImageUpload = ({ artwork }) => {
       );
       setImages([...images, addedImage]);
       setLastImageUUID("");
-    }, 2500);
+    }, 3500);
   };
 
   return (
