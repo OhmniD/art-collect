@@ -5,11 +5,13 @@ import { ArtworksContext } from "../../../providers/ArtworkProvider";
 import { ImagesContext } from "../../../providers/ImageProvider";
 import { API, graphqlOperation } from "aws-amplify";
 import { listImages } from "../../../graphql/queries";
+import S3UploadProgressBar from "./S3UploadProgressBar";
 
 const S3ImageUpload = ({ artwork }) => {
   const { images, setImages } = useContext(ImagesContext);
   const [uploading, setUploading] = useState(false);
   const [lastImageUUID, setLastImageUUID] = useState("");
+  const [uploadProgress, setUploadProgress] = useState({});
 
   useEffect(() => {
     if (uploading === false && lastImageUUID) {
@@ -25,6 +27,10 @@ const S3ImageUpload = ({ artwork }) => {
       customPrefix: { public: "uploads/" },
       // level: "private",
       metadata: { artworkId: artwork.id, owner: artwork.owner },
+      progressCallback(progress) {
+        console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+        setUploadProgress(progress);
+      },
     });
     console.log("Uploaded file: ", result);
     setUploading(false);
@@ -46,7 +52,7 @@ const S3ImageUpload = ({ artwork }) => {
       );
       setImages([...images, addedImage]);
       setLastImageUUID("");
-    }, 3000);
+    }, 2500);
   };
 
   return (
@@ -68,6 +74,10 @@ const S3ImageUpload = ({ artwork }) => {
         onChange={onChange}
         style={{ display: "none" }}
       />
+
+      {uploading ? (
+        <S3UploadProgressBar uploadProgress={uploadProgress} />
+      ) : null}
     </div>
   );
 };
