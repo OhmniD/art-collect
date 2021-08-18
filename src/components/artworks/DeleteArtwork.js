@@ -11,8 +11,7 @@ const DeleteArtwork = ({ artworkImages, artwork }) => {
     useContext(ArtworksContext);
 
   const handleDeleteClick = async () => {
-    artworkImages.map(async (image) => {
-      console.log(image);
+    artworkImages[artwork.id].map(async (image) => {
       await Storage.remove(image.thumbnail.key.replace("public/", ""))
         .then(console.log("Thumbnail deleted"))
         .catch((err) => console.log(err));
