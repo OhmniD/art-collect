@@ -15,7 +15,7 @@ export const MediumProvider = (props) => {
     const mediums = await API.graphql(graphqlOperation(listMediums), {
       variables: { filter: filter },
     });
-    setMediumCount(mediums.data.listMediums.scannedCount);
+    setMediumCount(mediums.data.listMediums.items.length);
     setMediums(mediums.data.listMediums.items);
   };
 

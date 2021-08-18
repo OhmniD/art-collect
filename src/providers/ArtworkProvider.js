@@ -16,7 +16,7 @@ export const ArtworkProvider = (props) => {
       variables: { filter: filter },
     });
 
-    setArtworkCount(artworks.data.listArtworks.scannedCount);
+    setArtworkCount(artworks.data.listArtworks.items.length);
 
     setArtworks(artworks.data.listArtworks.items);
   };

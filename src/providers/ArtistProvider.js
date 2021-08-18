@@ -16,7 +16,7 @@ export const ArtistProvider = (props) => {
       variables: { filter: filter },
     });
 
-    setArtistCount(artists.data.listArtists.scannedCount);
+    setArtistCount(artists.data.listArtists.items.length);
     setArtists(artists.data.listArtists.items);
   };
 
