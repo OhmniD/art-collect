@@ -18,7 +18,7 @@ const ArtworkListView = ({ key, artwork, artist, medium }) => {
     <tr key={key}>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
-          <div className="flex-shrink-0 h-15 w-15">
+          <div className="flex-shrink-0 h-44 w-44">
             {artworkImages[artwork.id].length ? (
               <AmplifyS3Image
                 key={artworkImages[artwork.id][0].thumbnail.key}
