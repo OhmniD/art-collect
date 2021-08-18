@@ -3,20 +3,13 @@ import { Link } from "react-router-dom";
 import { AmplifyS3Image } from "@aws-amplify/ui-react";
 import DeleteArtwork from "./DeleteArtwork";
 import placeholder from "../../static/assets/thumbnail-placeholder.png";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { ArtworkImagesContext } from "../../providers/ArtworkImageProvider";
 
-const ArtworkListView = ({ key, artwork, artist, medium, history, images }) => {
+const ArtworkListView = ({ key, artwork, artist, medium }) => {
   // const handleNavClick = (page) => (event) => history.push(page);
 
   const { artworkImages, setArtworkImages } = useContext(ArtworkImagesContext);
-
-  // useEffect(() => {
-  // 	const filteredImages = images.filter(
-  // 		(image) => image.artworkID === artwork.id
-  // 	);
-  // 	setArtworkImages(filteredImages);
-  // }, [images]);
 
   <ArtworkImagesContext.Provider
     value={{ artworkImages, setArtworkImages }}
@@ -62,11 +55,13 @@ const ArtworkListView = ({ key, artwork, artist, medium, history, images }) => {
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{artist.name}</div>
+        <div className="text-sm text-gray-900">
+          {artist ? artist.name : null}
+        </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-          {medium.medium}
+          {medium ? medium.medium : null}
         </span>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
