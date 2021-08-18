@@ -14,18 +14,22 @@ export default function Artworks(props) {
   const { mediums } = useContext(MediumsContext);
   const { collection } = useContext(CollectionContext);
   const { images } = useContext(ImagesContext);
-  // const linked = useLocation().state;
+  let location = useLocation();
 
   const [open, setOpen] = useState(false); //sets state of add artwork modal
   const [artworkNodes, setArtworkNodes] = useState([]);
-  // if (linked.artworks != null) {
-  //   console.log("Artwork props here!");
-  // } else {
-  //   console.log("No props passed down");
-  // }
 
   useEffect(() => {
-    const artworkNodes = artworks.map((artwork) => {
+    if (location.state) {
+      const artistWorks = location.state.artistWorks;
+      generateNodes(artistWorks);
+    } else {
+      generateNodes(artworks);
+    }
+  }, [images, artworks, mediums, artists]);
+
+  const generateNodes = (artworkList) => {
+    const artworkNodes = artworkList.map((artwork) => {
       const artist = artists.find(function (artist) {
         return artist.id === artwork.artistID;
       });
@@ -45,7 +49,7 @@ export default function Artworks(props) {
       );
     });
     setArtworkNodes(artworkNodes);
-  }, [images, artworks, mediums, artists]);
+  };
 
   return (
     <div>
