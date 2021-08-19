@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+![art-collect-logo](./src/static/assets/art-collect-logo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Artwork collection management database
 
-## Available Scripts
+This project was built as the final part of CodeClan's Professional Software Development course. We were given free rein to build an app using whatever tech stack we liked, so I decided to build it using React with Tailwind CSS for the front end and AWS serverless technologies for the back end.
 
-In the project directory, you can run:
+The app allows a user to add and delete artists, artworks and mediums to the database, as well as upload images. Functionality is minimal at the moment, but I hope to expand on this in the future.
 
-### `npm start`
+The data is held in DynamoDB and accessed via AppSync with GraphQL queries. Images are held on S3 with Lambda used to process them into thumbnails on upload. Authentication is handled by Cognito. Everything is tied together with Amplify.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can see the app live at https://www.art-collect.
 
-### `npm test`
+To install for your self:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Download/clone this repository
+- Cd to the project folder and run `npm install`
+- Download the AWS Amplify CLI
+- Run `amplify init` from the project folder to configure Amplify and create the Amplify resources
+- Run `amplify push` to push these resources to your AWS account
+- Run `npm start` to start the local development server
 
-### `npm run build`
+## Future refinements/fixes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Progress on this project was hampered by having to learn many new technologies (AWS, Tailwin, GraphQL) in the 10 days I had to build it - I hope to continue working on this, and will probably rebuild it from the ground up as I learn about each system in more depth.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Future plans include:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Add editions/prints
+- Edit records
+- Much better image handling
+- Comprehensive search system
+- Searchable form fields
+- Other artwork fields and data - notes, sales, location, loans
+- Different views to show data
+- Sorting and filtering
+- QR code label/shipping label generation
+- Dark mode
+- Pagination of results
+- Import/export functionality
+- Significant UI improvements and tweaks
+- Synchronisation and live updates
+- Multiple users /w permission levels
+- Bulk actions
+- PDF exports
+- Recycle bin for delete
+- Social providers login
+- Analytics
+- Use Typescript
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![art-collect-layout](./readme_iamges/app_overview.png)
