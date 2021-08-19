@@ -49,4 +49,4 @@ Future plans include:
 - Analytics
 - Use Typescript
 
-![art-collect-layout](./readme_iamges/app_overview.png)
+![art-collect-layout](./readme_images/app_overview.png)
