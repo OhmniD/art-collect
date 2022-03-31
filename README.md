@@ -10,7 +10,7 @@ The data is held in DynamoDB and accessed via AppSync with GraphQL queries. Imag
 
 ## Usage
 
-You can see the app live at https://www.art-collect.
+You can see the app live at https://www.art-collect.net
 
 To install for your self:
 
@@ -23,7 +23,7 @@ To install for your self:
 
 ## Future refinements/fixes
 
-Progress on this project was hampered by having to learn many new technologies (AWS, Tailwin, GraphQL) in the 10 days I had to build it - I hope to continue working on this, and will probably rebuild it from the ground up as I learn about each system in more depth.
+Progress on this project was hampered by having to learn many new technologies (AWS, Tailwind, GraphQL) in the 10 days I had to build it - I hope to continue working on this, and will probably rebuild it from the ground up as I learn about each system in more depth.
 
 Future plans include:
 
